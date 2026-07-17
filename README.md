@@ -32,7 +32,7 @@ market.** It felt fitting for a platform built to bring the market to life.
 
 | Landing Page | Stock Page Bullish | Stock Page Bearish | Unavailable Page |
 |--------------|-----------------|-------------|------------------|
-| ![Landing Page](/screenshots/Landing_Page.png) |  !Stock Page Bullish](screenshots/Stock_Page_Bullish.png) | ![Stock Page Bearish](screenshots/Stock_Page_Bearish.png) | ![Unavailable Page](screenshots/Unavailable_Page.png) |
+| ![Landing Page](/screenshots/Landing_Page.png) |  !Stock Page Bullish](/screenshots/Stock_Page_Bullish.png) | ![Stock Page Bearish](/screenshots/Stock_Page_Bearish.png) | ![Unavailable Page](/screenshots/Unavailable_Page.png) |
 
 ---
 
