@@ -49,8 +49,8 @@ stays easy on the eyes, while the warm orange gradients bring life and draw the 
 what matters.
 
 **A stock page that feels live — like a social stream, not a spreadsheet.**
-The initial page load (the stock page — `index.html`) was designed to feel like an
-almost social, live-stream-level data encounter — putting the primary, most important
+The initial page load (the stock page — `index.html`) was designed to feel like a
+social/live-stream-level market visual — putting the primary, most important
 information front and center the instant a user lands. From there, scrolling progressively
 reveals supporting artifacts — market data, related stocks, news, and more — layered by
 importance rather than dumped all at once. Primary information leads; supporting detail
