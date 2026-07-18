@@ -1,4 +1,4 @@
-# Rally <img width="40" height="40" alt="Rally_Helmet png" src="https://github.com/user-attachments/assets/8629698d-7f67-4f3c-8f4c-d0b15d0ff327" />
+# Rally
 Rally - Modern Live Market Platform
 
 **A live market platform — bridging beautiful data visualization with modern social features.**
