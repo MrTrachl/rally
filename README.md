@@ -47,7 +47,7 @@ The goal was a focused, energetic aesthetic: the dark base keeps attention on th
 stays easy on the eyes, while the warm orange gradients bring life and draw the eye to
 what matters.
 
-**A stock page that feels live — like a social stream, not a spreadsheet.**
+**A stock page that feels alive — like a social stream, not a spreadsheet.**
 The initial page load (the stock page — `index.html`) was designed to feel like a
 social/live-stream-level market visual — putting the primary, most important
 information front and center the instant a user lands. From there, scrolling progressively
