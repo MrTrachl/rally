@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rally | Welcome to the Future of Social Trading</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div style="width: 100%; height: 100%;; display: flex; flex-direction: column; box-sizing: border-box;">
+<!-- Header -->
+  <div style="height: 8vh; width: 100%; display: flex; align-items: center;">
+    <img src="/logo/logo_space_helm.png" height="70px;" width="70px;" style="margin-left: 90px; margin-top: 5px; border-radius: 8px;">
+    </div>
+
+<!-- Main content -->
+    <div style="flex: 1; width: 100%; display: flex; align-items: center; box-sizing: border-box; position: relative;z-index: 1;">
+   
+<!-- Solar System! ~ Purely a design component :) -->
+    <div class="solar-system">
+        <div class="orbit orbit-3"></div>
+        <div class="orbit orbit-2"></div>
+        <div class="orbit orbit-1"></div>
+        <div class="star"></div>
+    </div>
+
+    <!-- Star -->
+    <div style="position: absolute; top: 50px; left: 260px; background-color:rgb(255, 115, 0); height: 2px; width: 2px; border-radius: 50%; "></div>
+    <!-- Star -->
+    <div style="position: absolute; top: 0px; right: 250px; height: 2px; width: 2px; border-radius: 50%; background-color: white;"></div>
+    <!-- Star -->
+    <div style="position: absolute; top: 50px; right: 125px; height: 2px; width: 2px; border-radius: 50%; background-color: rgb(193, 182, 182);"></div>
+    <!-- Star -->
+    <div style="position: absolute; top: 250px; right: 190px; height: 2px; width: 2px; border-radius: 50%; background-color: rgb(143, 137, 137);"></div>
+    <!-- Orange Star -->
+    <div class="star" style="height: 3px; width: 3px; bottom: 100px; right: 100px;"></div>
+
+    <!-- Right side -->
+    <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; margin-top: 35px;">
+      <div class="card-shell">
+            <div class="card">
+                <div style="margin: 20px 0px 0px 40px; display: flex; align-items: center; border: 1px solid rgba(255, 115, 0, 0.352); width: fit-content; height: 26px; border-radius: 24px; padding: 0px 4px; background-color: rgba(255, 115, 0, 0.087);">
+                    <span style="background-color: rgb(255, 115, 0); border-radius: 50%; height: 3px; width: 3px; margin-left: 4px; margin-right: 4px;"></span>
+                    <p style="font-size: 11px; color: rgb(255, 115, 0); margin-right: 4px;">IN&nbsp;PROGRESS</p>
+                </div>
+                <p style="margin-top: 35px; margin-left: 50px; font-size: 34px; font-weight: 500; color: rgb(235, 230, 225);line-height: 1.2;">This page isn't <br> available yet.</p>
+
+                <div style="color: rgb(150,150,150); width: 50%; margin-left: 52px; line-height: 1.6; font-size: 15px; margin-top: -10px;">We're still building this part of Rally. Check back soon as we continue expanding the platform.</div>
+
+                <div style="border-top: 1px solid rgb(50, 50, 50); width: 84%; margin: 35px auto 0px auto;"></div>
+
+                <img src="/img/barrier_cone.png" height="190px;" width="295px;" style="position: absolute; right: -12px; top: 88px;">
+
+                <a href="index.html" style="text-decoration: none;">
+                  <div class="back-button">
+                    <img src="/icons/left_arrow.svg" height="24px;" width="24px;" style="position: absolute; left: 15px; top: 10px;">
+                    <span style="color: white; font-size: 14px; margin-left: 20px;">Go back</span>
+                  </div>
+                </a>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="height: 8vh; width: 90%; border-top: 1px solid rgb(50, 50, 50); display: flex; align-items: center; font-size: 13px; margin: 0px auto; position: relative; margin-top: 78px;">
+    <div style="margin-top: 8px; display: flex; align-items: center;">
+        <span style="color: rgb(150,150,150); margin-left: 10px;">Markets move.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: rgb(200, 200, 200);">People move them.</span>
+        <span style="display: flex; align-items: center; margin-left: 200px;">
+            <span style="font-size: 12px; color: rgb(145,145,145); margin-left: 2px;">&copy;&nbsp;Rally Financial LLC • All rights reserved</span> <span style="color: rgb(145,145,145); margin-left: 20px;">|</span> <span class="footer-text">Terms</span> <span class="footer-text">Privacy</span> <span class="footer-text">Help</span>
+        </span>
+
+        <span style="position: absolute; right: 25px; ">
+            <img class="footer-img-links" src="/brands/discord_logo.svg" height="24px;" width="24px;" style="margin-right: 20px;">
+            <img class="footer-img-links" src="/brands/x_logo.svg" height="24px;" width="24px;" style="margin-right: 20px;">
+            <img class="footer-img-links" src="/brands/instagram_logo.svg" height="24px;" width="24px;">
+        </span>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+<style>
+    
+    html {
+        background-color: #111111;
+    }
+    body {
+        font-family: Inter, system-ui, sans-serif;
+        color: rgb(250, 250, 250);
+        background-color: #111111;
+    }
+    html, body {
+  overscroll-behavior: none;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 1;
+  background-image:
+    radial-gradient(circle at 0% 0%, rgba(255,255,255,0.18) 1px, transparent 1px),
+    radial-gradient(circle at 0% 100%, rgba(255,255,255,0.14) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size:
+    22px 22px,
+    24px 24px,
+    34px 34px;
+  background-repeat: repeat;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.03), transparent 42%),
+    radial-gradient(circle at bottom, rgba(0, 0, 0, 0.45), transparent 60%),
+    #131313
+}
+    .background {
+   background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.28) 0 1px, transparent 1.1px) 0 0 / 18px 18px;
+  opacity: 0.85;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+
+.background {
+  transition: transform 500ms ease;
+  transform: scale(1);
+}
+
+.card {
+  position: relative;
+width: 575px; height: 400px;
+  border-radius: 24px;
+ 
+  background: rgba(8, 8, 8, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.015),
+    0 10px 40px rgba(0, 0, 0, 0.45);
+
+    border-radius: 17px;
+  background: linear-gradient(
+    180deg,
+    #111214 0%,
+    #101114 50%,
+    #0f1012 100%
+  );
+}
+
+
+</style>
+
+<style>
+.card-shell {
+  padding: 1px; /* border thickness */
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.35),
+    rgba(255,255,255,0.08),
+    rgba(0,0,0,0.35)
+  );
+}
+
+.card {
+  border-radius: 18px;
+  background: rgba(12, 12, 12, 0.92);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+}
+
+.custom-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background: #111;
+  cursor: pointer;
+  display: inline-grid;
+  place-content: center;
+}
+
+.back-button {
+    position: relative;
+    margin: 20px;
+    margin-top: 28px;
+    margin-left: 48px;
+    height: 44px; width: 125px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #ff8f25 0%, #ff7a14 35%, #e86500 100%);
+    color: white;
+    box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.16),
+    inset 0 -1px 0 rgba(0,0,0,0.18),
+    0 8px 20px rgba(255, 120, 20, 0.18);
+
+    display: flex; align-items: center; justify-content: center;
+}
+
+.back-button:hover {
+    cursor: pointer;
+    opacity: 0.9
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #252525;
+}
+
+.main-text {
+    background: linear-gradient(180deg, #f8f8f8 0%, #cfcfcf 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.demo-card-shell {
+  padding: 1px;
+  border-radius: 24px;
+  background: linear-gradient(
+    225deg,
+    rgba(255,255,255,0.35) 0%,
+    rgba(255,255,255,0.18) 18%,
+    rgba(255,255,255,0.08) 35%,
+    rgba(0,0,0,0.20) 75%,
+    rgba(0,0,0,0.40) 100%
+  );
+}
+
+.demo-card {
+  border-radius: 23px;
+  background: #121212;
+  /* background: #0C0C0C; */
+  width: 100%;
+  height: 100%;
+}
+
+.demo-card-shell-2 {
+  padding: 1px;
+  border-radius: 20px;
+  background: linear-gradient(
+  45deg,
+  rgba(255,255,255,0.35) 0%,
+  rgba(255,255,255,0.18) 18%,
+  rgba(255,255,255,0.08) 35%,
+  rgba(0,0,0,0.20) 75%,
+  rgba(0,0,0,0.40) 100%
+);
+}
+
+
+body::selection {
+  background: transparent;
+  color: inherit;
+}
+
+input::selection,
+textarea::selection {
+  background: rgba(255, 255, 255, 0.25);
+  color: inherit;
+}
+
+.signup-card-input {
+    border: 1px solid rgb(50, 50, 50); background-color: #1e1d1d; 
+    border-radius: 8px; 
+    height: 40px; width: 74%; padding: 0px 12px; 
+    display: flex; align-items: center; margin: 10px auto; cursor: text;
+ }
+ .signup-card-real-input {
+    outline: none; border: none; height: 30px; width: 88%; margin: 5px auto; margin-left: 10px; color: white; background-color: #1e1d1d;
+ }
+.signup-card-input:hover {
+    border-color: rgb(80, 80, 80);
+}
+.signup-card-input:hover, .signup-card-input:hover :last-child {
+    background-color: #222222;
+}
+
+.create-new-account-button {
+    cursor: pointer;
+}
+.create-new-account-button:hover {
+    cursor: pointer;
+    text-decoration-color: rgb(255, 115, 0);
+    text-decoration: underline;
+}
+.forget-password-button {
+    margin-left: auto; margin-right: 38px;
+    color: rgb(150, 150, 150); font-size: 13px;
+    cursor: pointer;
+}
+.footer-img-links {
+    cursor: pointer;
+    opacity: 0.6;
+}
+.footer-img-links:hover {
+    opacity: 1;
+    transition: transform 0.2s ease;
+    /* transform: translateY(-2px); */
+    cursor: pointer;
+}
+
+.footer-text {
+    color: rgb(145,145,145); margin-left: 20px;
+    cursor: pointer;
+}
+.forget-password-button:hover, .footer-text:hover {
+    cursor: pointer;
+    color: rgb(200, 200, 200);
+}
+</style>
+
+<style>
+.solar-system {
+    position: relative;
+    position: absolute; left: 85px; top: 115px;
+
+    width: 33vmin;
+    height: 33vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Orbital rings — perfect circles via border-radius: 50% */
+  .orbit {
+    position: absolute;
+    /* border: 1px solid rgba(255, 140, 0, 0.15);  faint orange ring */
+    border: 1px solid rgba(100, 100, 100, 0.22);
+    border-radius: 50%;               /* <-- your instinct, exactly right */
+  }
+  .orbit-1 { width: 30%; height: 30%; }   /* % of the container = scalable */
+  .orbit-2 { width: 60%; height: 60%; }
+  .orbit-3 { width: 90%; height: 90%; }
+
+  /* The star — radial-gradient + box-shadow glow (CSS does this best) */
+  .star {
+    position: absolute;
+    width: 4%;
+    height: 4%;
+    background: radial-gradient(circle, #ffcc66 0%, #ff8c00 60%, #ff6600 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 4vmin 1vmin rgba(255, 140, 0, 0.4);  /* the glow */
+  }
+</style>

@@ -1,0 +1,2512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rally - Watching Markets Live</title>
+
+    <link rel="icon" href="/logo/logo_space_helm.png" type="image/png">
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="/js/stocks.js" defer></script>
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-inner">
+            <img class="loader-logo" src="/logo/logo_space_helm.png" alt="Rally logo" height="64px;" width="64px;">
+            
+            <div class="loader-track">
+                <div class="loader-fill" id="loaderFill"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="app">
+        <header class="left-header" style="border-width: 1px; width:auto; left: 83px; right: 297px;">
+        <div style=" border-radius: 8px; height: 38px; width: 110px; display: flex; align-items: center; justify-content: center; position: absolute; left: 35px; top: 10px;">
+            <span style="border-radius: 50%; background-color: rgb(100, 252, 143); height: 8px; width: 8px ;  box-shadow: 0 0 8px rgba(25, 255, 122, 0.6);"></span>
+            <div style="margin-left: 12px; font-size: 12px; color: rgba(235, 235, 235, 0.85); letter-spacing: 0.2px; font-weight: 600;">Market&nbsp;Open</div>
+        </div>
+
+        <span class="searchbar searchbar-wrapper" id="searchbar" style="position: absolute; width: 340px; top: 50%; left: 54%; transform: translate(-50%, -50%); box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.18); background: #202020; border: 1px solid rgba(255, 255, 255, 0.12);">
+            <img class="searchbar-icon" src="/icons/magnifying_glass.svg" height="24px;" width="24px;">
+            <input placeholder="Search stocks, traders, & groups..." id="searchbar-input">
+            <span style="border-radius: 8px; width: 90%; background-color: rgb(46,46,46); width: fit-content; padding: 2px 10px; display: inline-flex; align-items: center; margin-right: 5px;">
+                <img src="/icons/searchbar_command.svg" height="12px;" width="12px;" style="margin-right: 5px;">
+                <span style="font-size: 12px; color: rgba(216, 205, 198, 1.00)">K</span>
+            </span>
+
+            <div id="search-results"></div>
+        </span>
+
+        <div style="display: inline-flex; align-items: center; position: absolute; right: 10px;">
+            <div class="ai-button" style="position: relative; width: fit-content; display: flex; align-items: center; padding-left: 11px; padding-right: 10px; border-radius: 12px; background: #202020; border: 1px solid rgba(255, 255, 255, 0.12); display: flex; align-items: center; height: 40px; margin-right: 8px;">
+                <img src="/icons/microphone.svg" width="22px;" height="22px;">
+            </div>
+
+            <div class="notifications-button" id="toggleDrawer" style="position: relative; width: fit-content; display: flex; align-items: center; padding-left: 11px; padding-right: 11px; border-radius: 12px; background: #202020; border: 1px solid rgba(255, 255, 255, 0.12); display: flex; align-items: center; height: 40px;;">
+                <img src="/icons/notifications_inbox.svg" width="22px;" height="22px;">
+            </div>
+        </div>
+    </header>
+
+        <aside class="left-aside">
+           <nav style="border-radius: 0px; border: 1px solid rgb(50, 50, 50); background: linear-gradient(180deg, #171717 0%, #101010 100%); height: 610px; width: 90%; margin: 0px 0px 0px 0px;display: flex; flex-direction: column;align-items: center;">
+
+                <img src="/logo/logo_space_helm.png" height="50px;" width="50px;" style="margin-top: 0px;">
+
+                <a href="/Unavailable.html">
+                    <div class="nav-tab-box" id="nav-home" style="margin-top: 20px;">
+                        <span><img class="nav-tab-icon" id="home-icon" src="/icons/nav_icons/nav_home_house.svg"></span>
+                    </div>
+                </a>
+
+                <a href="/Unavailable.html">
+                    <div class="nav-tab-box" id="nav-explore">
+                        <span><img class="nav-tab-icon" id="explore-icon" src="/icons/nav_icons/nav_explore_compass.svg"></span>
+                    </div>
+                </a>
+
+                <a href="/Unavailable.html">
+                    <div class="nav-tab-box" id="nav-leaderboard">
+                        <span><img class="nav-tab-icon" id="leaderboard-icon" src="/icons/nav_icons/nav_leaderboard_trophy.svg"></span>
+                    </div>
+                </a>
+
+                <a href="/Unavailable.html">
+                    <div class="nav-tab-box" id="nav-group">
+                        <span><img class="nav-tab-icon" id="group-icon" src="/icons/nav_icons/nav_groups_users.svg"></span>
+                    </div>    
+                </a>
+
+                <a href="/Unavailable.html">
+                    <div class="nav-tab-box" id="nav-chats" style="position: relative;">
+                        <span><img class="nav-tab-icon" id="chats-icon" src="/icons/nav_icons/nav_messages_chats.svg"></span>
+                        <span style="position: absolute; border-radius: 6px; background-color: #f59547; height: fit-content; width: fit-content; padding: 3px; font-weight: bold; right: 6px; top: 6px;"></span>
+                    </div>    
+                </a>
+
+                <a href="/Unavailable.html">
+                    <div class="nav-tab-box" id="nav-watchlist">
+                        <span><img class="nav-tab-icon" id="watchlist-icon" src="/icons/nav_icons/nav_watchlist_bookmark.svg"></span>
+                    </div>    
+                </a>
+
+                <a href="/Unavailable.html">
+                    <div class="nav-tab-box" id="nav-portfolio">
+                        <span><img class="nav-tab-icon" id="portfolio-icon" src="/icons/nav_icons/nav_portfolio_chart.svg"></span>
+                    </div>
+                </a>
+
+                <div class="upgrade-btn nav-tab-circle" style="background: linear-gradient(135deg, #E8631A 0%, #C04E0E 50%, #9E3D08 100%);">
+                    <img src="/icons/nav_icons/nav_upgrade_bolt.svg" height="16px;" width="16px;">
+                </div>
+
+            <div style="border-top: 1px solid rgb(50, 50, 50); width: 44%; margin: 0px 10px; position: absolute; bottom: 150px;"></div>
+
+            <div style="position: absolute; bottom: 80px; left: 18px;">
+
+                <a href="/Unavailable.html">
+                    <span class="account-button" id="go-to-profile-button">  
+                        <img class="nav-user-pfp" src="/demo_user_pfps/GitHub Pfp.jpg">
+                        <div style="background-color: rgb(15,15,15); height: 8px; width: 8px; position: absolute; right: 0px; bottom: 4px; display: flex; align-items: center; justify-content: center; border-radius: 24px;">
+                            <div style="background-color: rgb(100, 252, 100);border-radius: 50%; height: 6px; width: 6px;"></div>
+                        </div>    
+                    </span>
+                </a>
+            </div>
+            <div class="nav-tab-box" id="signOutButton" style="position: absolute; bottom: 22px; left: 18px;">
+                <img src="/icons/nav_icons/nav_logout_exit.svg" height="26px;" width="26px;">
+                <!-- <span style="margin-left: 15px; font-size: 13px;">Log Out</span> --> <!--height of icons was 24px by 24px;-->
+            </div>
+            </nav>
+        </aside>
+
+        <main style="background-color: rgb(20, 20, 20); margin-right: 0px; width: 900px; margin-top: 50px;">
+            <div style="margin-top: 0px; height: 110px; position: relative; background-color: rgb(28,28, 28);width: 100.7%; border: 1px solid rgb(50, 50, 50); border-left: none;">
+
+                <img id="header-stock-logo" width="75px;" height="75px;" style="border-radius: 20px; margin-left: 38px; margin-top: 20px; opacity: 0.90; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4); filter: brightness(0.96)"> 
+
+                <div style="position: absolute; top: 4px; left: 140px; display: inline-flex; align-items: center;">
+                    <p id="header-stock-ticker"></p>
+                
+                    <img src="/icons/ticker_badge_check.svg" height="18px;" width="18px;" style="margin-left: 8px;">
+                </div>
+
+                <div style="position: absolute; left: 140px; top: 48px; display: flex; align-items: center;">
+                    <div id="header-stock-company-name"></div>
+                </div>
+
+                <div style="position: absolute; left: 130px; top: 70px; display: flex; align-items: center;">
+                    <div id="header-stock-price" style=" font-size: 22px; margin-left: 10px; color: rgb(240, 240, 240)">$0.00</div> 
+                    <img id="header-change-caret" src="/icons/caret_up.svg" height="16px;" width="16px;" style="margin-left: 10px">
+                    <span id="current_price" style="color: rgb(25, 255, 122);font-size: 13px; margin-left: 2px;">$0.00</span>
+                    <span id="current-percent-change" style="color: rgb(96, 252, 95); font-size: 13px; margin-left: 5px;">
+                        0.00%
+                    </span>
+                </div>
+               
+                <div class="button-header" onclick="toggleMenu(false)" style="position: absolute; right: 136px; top: 20px; background-color: #22C55E; border-radius: 10px; width: 90px; height:34px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                    Buy
+                </div>
+
+                <div class="button-header" onclick="toggleMenu(true)" style="position: absolute; right: 35px; top: 20px; background-color: #EF4444; border-radius: 10px; width: 90px; height:32px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                    Sell
+                </div>
+
+                <div id="add-to-watchlist-button">
+                    <img id="watchlist-star-icon" src="/icons/add_watchlist_star.svg" height="16px;" width="16px;" style="margin-right: 5px;">
+                    <span id="watchlist-button-label">Add to Watchlist</span>
+                </div>
+            </div>
+
+            <div class="graph-container">
+                
+                <span style="padding-top: 4px; display: grid;grid-template-columns: 1fr auto 1fr; align-items: center;">
+                    <!-- Live -->
+                    <span style="justify-self: start; display: flex; align-items: center;  gap: 8px; margin-left: 40px;">
+                        <span style="color: rgb(165,165,165); font-size: 11px; font-weight: 600; letter-spacing: 0.6px;">LIVE</span>
+                        <span class="live-dot"></span>
+                    </span>
+                    <!-- Graph swappers -->
+                    <span class="graph-swapper" style="justify-self: center;">
+                        <div style="width: fit-content; border-radius: 6px; padding: 4px; position: relative; display: inline-flex; align-items: center">
+                            <!-- Start -->
+                            <span class="graph-switcher range-btn" data-range="Live" style="background-color: rgb(44,44,44);">
+                                LIVE
+                            </span>
+                            <span class="graph-switcher range-btn selected" data-range="1D">1D</span>
+                            <span class="graph-switcher range-btn" data-range="1W">1W</span>
+    
+                            <span class="graph-switcher range-btn" data-range="3M">3M</span>
+                            <span class="graph-switcher range-btn" data-range="6M">6M</span>
+                            <span class="graph-switcher range-btn" data-range="1Y">1Y</span>
+                            <span class="graph-switcher range-btn" data-range="3Y">3Y</span>
+                            <span class="graph-switcher range-btn" data-range="All">
+                                ALL
+                            </span>
+                            <!-- End -->
+                        </div>
+                    </span>
+                    <!-- Graph control buttons -->
+                    <span style="justify-self: end; margin-right: 50px; padding: 2px 0px; padding-right: 5px; height: 34px; width: 82px; display: flex; align-items: center;">
+                        <button id="switch-line" class="graph-type-button selected" ><img src="/icons/graph_line.svg" width="24px;" height="24px;"></button>
+                        <span style="display: inline-block; height: 50%; border-left: 1px solid rgb(50, 50, 50); margin: 0px 3px;"></span>
+                        <button id="switch-candle" class="graph-type-button"><img src="/icons/graph_candlestick.svg" height="24px;" width="24px;"></button>
+                    </span>
+                </span>
+ 
+                <!-- Main Graph -->
+                <div class="graph-frame">
+                    <div id="main-graph"></div>
+                </div>
+
+            <!-- Sub Graph Data Metric display -->
+            <div class="graph-data-bar">
+                    <span class="graph-data-bar-section" style="width: fit-content; margin-left: 8px;">
+                        <div class="ring-card">
+                                <svg class="progress-ring" viewBox="0 0 120 120">
+                                <circle class="track" cx="60" cy="60" r="48"></circle>
+
+                                <!-- red segment -->
+                                <circle class="red-segment" cx="60" cy="60" r="48"></circle>
+
+                                <!-- green progress -->
+                                <circle class="progress" cx="60" cy="60" r="48"></circle>
+
+                                <text class="ring-label" x="60" y="64" text-anchor="middle">58%</text>
+                                </svg>
+                            </div>
+                        
+
+                        <div style="display: flex;  flex-direction: column; justify-content: center;">
+                            <p class="graph-data-bar-label">Rally&nbsp;Sentiment</p>
+                            <p class="graph-data-bar-value" style="color: var(--data-green);">Bullish</p>
+                        </div>
+                    </span>
+
+                    <span style="border-right: 1px solid rgb(50, 50, 50); margin-left: 30px; height: 48%;"></span>
+
+                    <span class="graph-data-bar-section">
+                        <img src="/icons/live_volume_radar.svg" height="40px;" width="40px;">
+                        <div style="display: flex; flex-direction: column; justify-content: center;">
+                            <p class="graph-data-bar-label">Live Volume</p>
+                            <p class="graph-data-bar-value" id="live-volume-value">--</p>
+                        </div>
+                    </span>
+
+                    <span style="border-right: 1px solid rgb(50, 50, 50); margin-left:20px; height: 48%;"></span>
+
+                    <span class="graph-data-bar-section">
+                        <img src="/icons/avg_volume_radar.svg" height="40px;" width="40px;">
+                        <div style="display:flex; justify-content: center; flex-direction: column;">
+                            <p class="graph-data-bar-label">Avg. Volume</p>
+                            <p class="graph-data-bar-value">340.98K</p>
+                        </div>
+
+                    </span>
+
+                    <span style="border-right: 1px solid rgb(50, 50, 50); margin-left: 20px; height: 48%;"></span>
+
+                    <span style="position: relative; background-color: rgb(28, 28, 28); height: 70px; min-width: 150px; width: auto">
+                            <div class="range-card">
+                                <div class="range-title">24h Range</div>
+
+                                <div class="range-row">
+                                <div class="range-value" id="range-low-value">--</div>
+
+                                <div class="range-bar">
+                                <div class="range-track"></div>
+                                <div class="range-fill" id="range-fill"></div>
+                                <div class="range-thumb" id="range-thumb"></div>
+                            </div>
+
+                            <div class="range-value" id="range-high-value">--</div>
+                         </div>
+                        </div>
+                    </span>
+            </div>
+
+            <!-- Informational Bar (Contains Swapper tabs to parse between content) -->
+            <div class="section-tab-bar">
+                <span class="section-tab active" style="margin-left: 4rem;">
+                    <p>Metrics</p>
+                </span>
+                <span class="section-tab">
+                    <p>News</p>
+                </span>
+                 <span class="section-tab">
+                    <p>Filings</p>
+                </span>
+                 <span class="section-tab">
+                    <p>Earnings</p>
+                </span>
+                <span class="section-tab">
+                    <p>About</p>
+                </span>
+                <span class="section-tab">
+                    <p>Posts</p>
+                </span>
+                <span id="stock-content-slider"></span>
+            </div>
+
+            <div style="position: relative; margin-bottom: 10px; width: 100%; margin: 25px 5px 0px 0px;">
+                <span style="display: inline-flex; align-items: center; width: 100%;">
+                    <div style="width: 98%; height: 350px; border-radius: 12px; position: relative;">
+                      
+                        <div style="display: flex; align-items: center;">
+                            <div style="color: var(--text-1); font-size: 16px; margin: 10px; margin-left: 60px; margin-bottom: 6px;" id="metrics-header-ticker"></div>
+                            <span style="color: var(--text-4); font-size: 12px; margin-top: 6px;" id="metrics-header-company-name"></span>
+                        </div>
+                
+                        <div style="margin: 0px; margin-left: 60px; font-size: 12px; color :rgb(150 ,150, 150)">Key valuation, trading, and ownership metrics for 
+                            <span id="metrics-subheader-company-name"></span>
+                        </div>
+
+                        <div style="position: absolute; top: 70px; left: 45px; display: flex; align-items: center;">
+                            <div style="position: relative; display: inline-block; margin-left: 10px; border-radius: 14px; border: 1px solid rgb(60, 60, 60); background-color: rgb(30, 30, 30); width: 180px; height: 100px;">
+                                <div style="position: absolute; top: 18px; left: 18px; color: rgb(145,145,145); font-size: 10px;">P/E RATIO (TTM)</div>
+
+                                <div style="color: rgb(240, 240, 240); font-size: 22px; position: absolute; top: 50%; transform: translateY(-50%); left: 12%; font-family: Inter, sans-serif;">
+                                    28.54
+                                </div>
+
+                                <div style="position: absolute; bottom: 18px; left: 18px; display: flex; align-items: center;">
+                                    <span style="color: rgb(110,110,110); font-size: 11px;">vs sector 24.1</span>
+                                </div>
+                            </div>     
+
+                            <div style="position: relative; display: inline-block; margin-left: 10px; border-radius: 14px; border: 1px solid rgb(60, 60 ,60); background-color: rgb(30, 30, 30); width: 180px; height: 100px;">
+                                <div style="position: absolute; top: 18px; left: 16px; color: rgb(145,145,145); font-size: 10px;">SHORT INTEREST</div>
+                                
+                                <div style="color: rgb(240, 240, 240); font-size: 22px; position: absolute; top: 50%; transform: translateY(-50%); left: 12%; font-family: Inter, sans-serif;">
+                                    0.58
+                                </div>
+
+                                <div style="position: absolute; bottom: 18px; left: 16px; display: flex; align-items: center;">
+                                    <img src="/icons/caret_down.svg" height="16px;" width="16px;">
+                                    <span style="color: rgb(252, 96, 96); font-size: 13px; margin-left: 3px;">2.1%</span>
+                                    <span style="color: rgb(125,125,125); font-size: 11px;">&nbsp;vs 30d ago</span>
+                                </div>
+                            </div>
+
+                             <div style="position: relative; display: inline-block; margin-left: 10px; border-radius: 14px; border: 1px solid rgb(60, 60, 60); background-color: rgb(30, 30,30); width: 180px; height: 100px;">
+                                <div style="position: absolute; top: 18px; left: 18px; color: rgb(145,145,145); font-size: 10px;">DIVIDEND</div>
+                                
+                                <div style="color: rgb(240, 240, 240); font-size: 22px; position: absolute; top: 50%; transform: translateY(-50%); left: 12%; font-family: Inter, sans-serif;">
+                                    0.48%
+                                </div>
+
+                                <div style="position: absolute; bottom: 18px; left: 18px; display: flex; align-items: center;">
+                                    <span style="color: rgb(110,110,110); font-size: 11px;">Annual $1.00 / share</span>
+                                </div>
+                            </div>
+
+                             <div style="position: relative; display: inline-block; margin-left: 10px; border-radius: 14px; border: 1px solid rgb(60, 60, 60); background-color: rgb(30, 30, 30); width: 180px; height: 100px;">
+                                <div style="position: absolute; top: 18px; left: 18px; color: rgb(145,145,145); font-size: 10px;">TARGET PRICE</div>
+
+                                <div style=" color: rgb(240, 240, 240); font-size: 22px; position: absolute; top: 50%; transform: translateY(-50%); left: 10%; font-family: Inter, sans-serif;">
+                                    $400.50
+                                </div>
+
+                                <div style="position: absolute; bottom: 18px; left: 18px; display: flex; align-items: center;">
+                                    <img src="/icons/caret_up.svg" height="16px;" width="16px;">
+                                    <span style="color: var(--data-green); font-size: 11px; margin-left: 3px;">11.43% upside</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="metric-panel" style="position: absolute; top: 190px; left: 55px; width: 750px;">
+                            <div class="metric-cluster">
+                                <div class="metric-row">
+                                    <span class="metric-label">Index</span>
+                                    <span class="metric-value">S&amp;P 500</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-label">Market Cap</span>
+                                    <span class="metric-value">427.04<span class="metric-unit">B</span></span>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-label">Income</span>
+                                    <span class="metric-value">30.34<span class="metric-unit">B</span></span>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-label">Sales</span>
+                                    <span class="metric-value">195.00<span class="metric-unit">B</span></span>
+                                </div>
+                            </div>
+                        <div class="metric-cluster">
+                            <div class="metric-row">
+                                <span class="metric-label">EPS (TTM)</span>
+                                <span class="metric-value">$7.72</span>
+                            </div>
+                            <div class="metric-row">
+                                <span class="metric-label">Revenue Growth (YoY)</span>
+                                <span class="metric-value metric-value--up">
+                                    <span>
+                                        <img src="/icons/caret_up.svg" height="18px;" width="18px;">
+                                    </span>
+                                    8.2
+                                    <span class="metric-unit">%</span></span>
+                            </div>
+                            <div class="metric-row">
+                                <span class="metric-label">Profit Margin</span>
+                                <span class="metric-value">25.3<span class="metric-unit">%</span></span>
+                                <!-- bar scaled on a 0-40% margin range: 25.3 / 40 = 63% -->
+                                <span class="metric-bar"><i style="width:63%"></i></span>
+                            </div>
+                            <div class="metric-row">
+                                <span class="metric-label">52-Week Range</span>
+                                <span class="metric-value">$164 <span class="metric-unit">–</span> $237</span>
+                                <!-- thumb = current price position: (220.44-164.08)/(237.49-164.08) = 77% -->
+                                <span class="metric-bar metric-bar--range"><i style="width:77%"></i><b style="left:77%"></b></span>
+                            </div>
+                        </div>
+                        <div class="metric-cluster">
+                            <div class="metric-row">
+                                <span class="metric-label">Shares Outstanding</span>
+                                <span class="metric-value">7.13<span class="metric-unit">B</span></span>
+                            </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Book / Share</span>
+                            <span class="metric-value">3.64</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">RSI (14)</span>
+                            <span class="metric-value">75.10</span>
+                            <span class="metric-bar"><i style="width:75%"></i></span>
+                            </div>
+                                <div class="metric-row">
+                                <span class="metric-label">Beta</span>
+                                <span class="metric-value">1.18</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </div>
+
+            <div style="width: 100.7%; border-top: 1px solid rgb(50, 50, 50); margin-top: 55px; margin-left: -5px;"></div>
+
+            <div style="height: 225px; display: flex; align-items: center; padding: 10px 15px; margin-top: 18px; position: relative; padding-top: 0px;">
+                <div style="position: absolute; top: 10px; left: 30px; font-size: 16px;">Related stocks to <span id="related-stocks-company-name"></span></div>
+                <div style="position: absolute; top: 38px; left: 30px; font-size: 12px; color: rgb(150, 150, 150);">This list is generated using Rally's data. This is not a recommendation.</div>
+
+                <span class="related-stocks-card">
+                    <span class="related-stocks-card-logo">
+                        <img src="/brands/demo_brand_logos/demo_apple_logo.svg" height="30px;" width="30px;">
+                    </span>
+                    <span class="related-stocks-card-ticker">APPL</span>
+                    <span class="related-stocks-card-company-name">Apple Inc.</span>
+                    <span class="related-stocks-card-price">$946.12</span>
+
+                    <span class="related-stocks-card-percent-change positive">
+                        <img src="/icons/caret_up.svg" height="16px;" width="16px;" style="margin-right: 2px; display: inline; margin-top: 1px;">
+                        1.95%
+                    </span>
+
+                    <div id="msft-graph" style="height: 80px; width: 88%; margin-left: 6px; position: absolute; top: 48%; transform: translateY(-50%); padding: 10px; "></div>
+                </span>
+
+                <span class="related-stocks-card">
+                    <span class="related-stocks-card-logo">
+                        <img src="/brands/demo_brand_logos/demo_xbox_logo.svg" height="30px;" width="30px;">
+                    </span>
+                    <span class="related-stocks-card-ticker">MSFT</span>
+                    <span class="related-stocks-card-company-name">Microsoft</span>
+                    <span class="related-stocks-card-price">$591.50</span>
+
+                    <span class="related-stocks-card-percent-change positive">
+                        <img src="/icons/caret_up.svg" height="16px;" width="16px;" style="margin-right: 2px; display: inline; margin-top: 1px;">
+                        2.48%
+                    </span>
+
+                    <div id="sandp-graph" style="height: 80px; width: 88%; margin-left: 6px; position: absolute; top: 48%; transform: translateY(-50%); padding: 10px;"></div>
+                </span>
+
+                <span class="related-stocks-card">
+                    <span class="related-stocks-card-logo">
+                        <!-- Color of icon is 203,193,193 rgb -->
+                        <img src="/brands/demo_brand_logos/demo_pinterest_logo.svg" height="30px;" width="30px;"> 
+                    </span>
+                    <span class="related-stocks-card-ticker">PINS</span>
+                    <span class="related-stocks-card-company-name">Pintrest, Inc</span>
+                    <span class="related-stocks-card-price">$31.18</span>
+
+                    <span class="related-stocks-card-percent-change negative">
+                        <img src="/icons/caret_down.svg" height="16px;" width="16px;" style="margin-right: 2px; display: inline; margin-top: 0px;">
+                        4.91%
+                    </span>
+
+                    <div id="pins-graph" style="height: 80px; width: 88%; margin-left: 6px; position: absolute; top: 48%; transform: translateY(-50%); padding: 10px;"></div>
+                </span>
+
+                <span class="related-stocks-card">
+                    <span class="related-stocks-card-logo">
+                        <img src="/brands/demo_brand_logos/demo_openai_logo.svg" height="30px;" width="30px;">
+                    </span>
+                    <span class="related-stocks-card-ticker">OPAI</span>
+                    <span class="related-stocks-card-company-name">OpenAI Inc.</span>
+                    <span class="related-stocks-card-price">$240.67</span>
+
+                    <span class="related-stocks-card-percent-change positive">
+                        <img src="/icons/caret_up.svg" height="16px;" width="16px;" style="margin-right: 2px; display: inline; margin-top: 1px;">
+                        10.24%
+                    </span>
+
+                    <div id="openai-graph" style="height: 80px; width: 88%; margin-left: 6px; position: absolute; top: 60%; transform: translateY(-50%); padding: 10px;"></div>
+                </span>
+            </div>
+
+            <footer style="height: 20px; width: 100%; padding-top: 20px; padding-bottom: 15px;">
+                <span style="display: flex; justify-content: center; align-items: center;">
+                    <div style="display: flex; align-items: center;">
+                        <span style="font-size: 12px; color: var(--text-5); margin-left: 2px;">&copy;&nbsp;Rally Financial LLC • All rights reserved</span> 
+                        <span style="color: var(--text-5); margin-left: 20px;">|</span> 
+                        <span class="footer-text" style="font-size: 12px;">Terms</span> 
+                        <span class="footer-text" style="font-size: 12px;">Privacy</span> 
+                        <span class="footer-text" style="font-size: 12px;">Help</span>
+                    </div>  
+                </span>
+            </footer>
+
+            </div>
+        </main>
+
+        <aside class="right-aside"></aside>
+    </div>
+
+<!-- Trade Popup -->
+    <div class="overlay" id="overlay"></div>
+    <span class="kebab-menu" style="position: absolute;">
+        <div class="menu-content mode-buy" id="menu-content">
+
+            <!-- Header: stock identity + close -->
+            <div class="trade-head">
+                <div class="trade-stock">
+                    <span class="trade-logo">
+                        <img id="trade-logo" src=""  alt="">
+                    </span>
+                    <div class="trade-stock-meta">
+                        <span class="trade-ticker" id="trade-ticker"></span>
+                        <span class="trade-sub"> &middot; Market Order</span>
+                    </div>
+                </div>
+                <button class="popup-close-button" id="closeMenu" aria-label="Close"></button>
+            </div>
+
+            <!-- Price hero -->
+            <div class="trade-hero">
+                <span class="trade-hero-label">Current Price</span>
+                <div class="trade-hero-price">
+                    <span class="trade-hero-value">$220.44</span>
+                    <span class="trade-hero-change">+1.24 (0.57%)</span>
+                </div>
+                <div class="trade-quotes">
+                    <div class="trade-quote">
+                        <span class="trade-quote-label">Bid</span>
+                        <span class="trade-quote-value">$218.06<em>&times;1</em></span>
+                    </div>
+                    <div class="trade-quote">
+                        <span class="trade-quote-label">Ask</span>
+                        <span class="trade-quote-value">$222.56<em>&times;2</em></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buy / Sell segmented control -->
+            <div class="toggle-switch">
+                <div class="toggle-option active" onclick="switchTab('buy')" id="buy-toggle-option">Buy</div>
+                <div class="toggle-option" onclick="switchTab('sell')" id="sell-toggle-option">Sell</div>
+                <div class="slider" id="slider-action"></div>
+            </div>
+
+            <!-- Balance context -->
+            <div class="trade-balance" id="buy-tab-content">
+                <span class="trade-balance-label">Available Cash</span>
+                <span class="trade-balance-value">$68,905.67</span>
+            </div>
+            <div class="trade-balance" id="sell-tab-content" style="display: none;">
+                <span class="trade-balance-label">Shares Owned</span>
+                <span class="trade-balance-value">205.24 shares</span>
+            </div>
+
+            <!-- Fields -->
+            <div class="trade-field">
+                <label class="trade-field-label">Order Type</label>
+                <input class="popup-input" value="Market" readonly>
+            </div>
+            <div class="trade-field">
+                <label class="trade-field-label">Quantity</label>
+                <input class="popup-input" placeholder="0" id="popup-quantity-input" type="number" min="0">
+            </div>
+
+            <!-- Estimate -->
+            <div class="trade-estimate">
+                <span id="popup-estimated-tab">Estimated Cost</span>
+                <span id="estimated-num-value">$0.00</span>
+            </div>
+
+            <!-- Actions -->
+            <div class="trade-actions">
+                <button class="popup-button" id="cancel-button">Cancel</button>
+                <button class="popup-button popup-buy-button" id="popup-buy-or-sell-button">Buy</button>
+            </div>
+        </div>
+    </span>
+
+<!-- Notifications drawer -->
+    <div id="drawer" class="drawer">
+        <div class="drawer-head">
+            <div class="drawer-title">
+                Notifications
+                <span class="drawer-badge" id="drawer-unread-count">2</span>
+            </div>
+            <div class="drawer-head-actions">
+                <button class="drawer-mark-read" id="markAllReadButton">Mark all read</button>
+                <button class="drawer-close" id="closeMessageDrawerButton" aria-label="Close"></button>
+            </div>
+        </div>
+
+        <div class="drawer-body">
+            <div class="drawer-group-label">Recent</div>
+
+            <div class="notif unread">
+                <span class="notif-avatar">
+                    <img src="/demo_user_pfps/demo_user_3.png" alt="">
+                    <span class="notif-dot"></span>
+                </span>
+                <div class="notif-body">
+                    <div class="notif-text"><b>MoneyMultiplier</b> replied to your post</div>
+                    <div class="notif-snippet">“Lemme know how that goes lol”</div>
+                    <div class="notif-meta">
+                        <span class="notif-ticker">APPL</span>
+                        <span class="notif-time">2h ago</span>
+                    </div>
+                </div>
+                <button class="notif-dismiss" aria-label="Dismiss"></button>
+            </div>
+
+            <div class="notif unread">
+                <span class="notif-avatar">
+                    <img src="/demo_user_pfps/demo_user_1.png" alt="">
+                    <span class="notif-dot"></span>
+                </span>
+                <div class="notif-body">
+                    <div class="notif-text"><b>SwingTrader5542</b> started following you</div>
+                    <div class="notif-meta">
+                        <span class="notif-time">5h ago</span>
+                    </div>
+                </div>
+                <button class="notif-dismiss" aria-label="Dismiss"></button>
+            </div>
+
+            <div class="drawer-group-label">Earlier</div>
+
+            <div class="notif">
+                <span class="notif-avatar">
+                    <img src="/demo_user_pfps/bot_user.svg" alt="">
+                </span>
+                <div class="notif-body">
+                    <div class="notif-text"><b>Rally</b> flagged unusual volume on AAPL</div>
+                    <div class="notif-meta">
+                        <span class="notif-ticker">APPL</span>
+                        <span class="notif-time">May 15</span>
+                    </div>
+                </div>
+                <button class="notif-dismiss" aria-label="Dismiss"></button>
+            </div>
+
+            <div class="notif">
+                <span class="notif-avatar">
+                    <img src="/demo_user_pfps/demo_user_2.png" alt="">
+                </span>
+                <div class="notif-body">
+                    <div class="notif-text"><b>CrypticCrypto</b> liked your post</div>
+                    <div class="notif-meta">
+                        <span class="notif-time">May 15</span>
+                    </div>
+                </div>
+                <button class="notif-dismiss" aria-label="Dismiss"></button>
+            </div>
+
+            <div class="drawer-empty" id="drawerEmpty" style="display: none;">
+                <div class="drawer-empty-icon">
+                    <img src="/icons/notifications_inbox.svg" width="26" height="26" alt="">
+                </div>
+                <div class="drawer-empty-title">You’re all caught up</div>
+                <div class="drawer-empty-sub">New notifications will show up here.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-aside-container" style="background-color: rgb(29, 29, 29); border-left: 1px solid rgb(50, 50, 50); border-radius: 0px; box-shadow: 0 8px 20px rgba(20, 20, 20, 0.2); background-color: #1a1a1a;">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <div class="chat-title">Live Chat</div>
+                        <div style="display: flex; align-items: center; margin-left: 20px;">
+                            <img src="/icons/live_chat_users.svg" height="14px" width="14px;" style="margin-left: 5px;">
+                            <span class="chat-viewer-count">176</span>
+                        </div>
+        
+                        <div style="margin-left: auto; margin-right: -5px;">
+                            <img src="/icons/chat_settings.svg" height="22px;" width="22px" style="margin-left: auto; margin-right: 8px;">
+                        </div>
+                    </div>
+
+                    <div class="chat-message-container" id="chatMessageContainer">
+
+                    <!-- Chat comments go here -->
+                    <div class="chat-message">
+                        <img class="chat-pfp user-pfp" src="/demo_user_pfps/demo_user_4.png"> 
+                        <span class="chat-username">
+                            FullSendTrades
+                            &nbsp;
+                            <span class="chat-time">
+                               48s ago
+                            </span>
+                        </span> 
+                        
+                        <span class="chat-comment">
+                        What's everyones analysis of this? Buy? 🤔
+                        </span>
+                    </div>
+
+                    <div class="chat-message">
+                        <img class="chat-pfp user-pfp" src="/demo_user_pfps/demo_user_1.png"> 
+                        <span class="chat-username">
+                           SwingTrader5542
+                            &nbsp;
+                            <span class="chat-time">
+                               36s ago
+                            </span>
+                        </span> 
+                        
+                        <span class="chat-comment">
+                        Tune out the noise and decide for yourself
+                        </span>
+                    </div>
+
+                    <div class="chat-message">
+                        <img class="chat-pfp user-pfp" src="/demo_user_pfps/demo_user_3.png"> 
+                        <span class="chat-username">
+                           MarketMaestro
+                            &nbsp;
+                            <span class="chat-time">
+                               34s ago
+                            </span>
+                        </span> 
+                        
+                        <span class="chat-comment">
+                           Selling now for a quick flip 👏👏👏
+                        </span>
+                    </div>
+
+                    <div class="chat-message">
+                        <img class="chat-pfp user-pfp" src="/demo_user_pfps/demo_user_2.png"> 
+                        <span class="chat-username">
+                           CrypticCrypto
+                            &nbsp;
+                            <span class="chat-time">
+                               30s ago
+                            </span>
+                        </span> 
+                        
+                        <span class="chat-comment">
+                            Nice!🔥😎
+                        </span>
+                    </div>
+
+                    <div class="chat-message">
+                        <img class="chat-pfp user-pfp" src="/demo_user_pfps/bot_user.svg"> <!--rgb(195, 191, 180)-->
+                        <span class="chat-username">
+                            Bot
+                           
+                            <!-- <span style="color: #A78BFA;">AI</span> -->
+                            &nbsp;
+                            <span class="chat-time">
+                                18s ago
+                            </span>
+                        </span> 
+                        
+                        <span class="chat-comment">
+                            Market is broadly up on easing global tensions
+                        </span>
+                    </div>
+
+                    <div class="chat-message">
+                        <img class="chat-pfp user-pfp" src="/demo_user_pfps/demo_user_3.png"> 
+                        <span class="chat-username">
+                            MarketMaestro
+                            &nbsp;
+                            <span class="chat-time">
+                                10s ago
+                            </span>
+                        </span> 
+                        
+                        <span class="chat-comment" style="font-size: 26px;">
+                            😁
+                        </span>
+                    </div>
+                </div>
+                <!-- End of chat container -->
+
+                    <div style="height: 0px; width: 100%; background-color: rgb(30,30,30);"></div>
+                   <!--  style="position: absolute; bottom: 8px; left: 8px; right: 8px; border-radius: 8px; background-color: rgb(36,36,36); border: 1px solid rgb(75,75,75); height: 90px; width: 92%; margin-top: 5px; padding: 2px; margin: 0px auto; margin-left: 5px; box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.18);" -->
+                    <div class="chat-input-area">
+                        <div class="chat-input-row">
+                            <textarea  placeholder="Type a message..." type="text" maxLength="200" id="chat-input"></textarea>
+                        </div>
+                        <div class="chat-toolbar">
+                            <img src="/icons/settings_emoji_picker.svg" height="26px;" width="26px;" style="margin: 0px 0px 5px 10px; ">
+                            <div class="char-counter" id="charCounter">0/200</div>
+                            <img src="/icons/arrow_up_solid-full (1).svg" height="18px;" width="18px;" id="send-chat-btn">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </body>
+</html>
+
+<!-- HighChart Import! -->
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+
+<!-- Main Graph HighCharts Code -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    // ⬇️ Data now starts EMPTY — real data will be loaded via loadChartData()
+    let data = [];
+    let volumeData = [];
+    let openPrice = null;
+    let chart;
+
+    // The day's real low/high so far. Ticks are generated evenly across THIS
+    // band (not the padded axis bounds), so the bottom label sits on the actual
+    // trough and the top label on the actual peak — no wasted labels in the pad.
+    let frameLow = null;
+    let frameHigh = null;
+
+    // ---------------------------------------------------------------
+    // CHART SETUP -> this is the main chart...
+    // ---------------------------------------------------------------
+    chart = Highcharts.stockChart('main-graph', {
+        chart: {
+            type: 'areaspline',
+            backgroundColor: 'rgb(20,20,20)',
+            spacingTop: 40,
+            spacingRight: 40,
+            spacingBottom: 20,
+            spacingLeft: 20,
+            zooming: { mouseWheel: false },
+            style: { fontFamily: 'Inter, Roboto, Arial, sans-serif' },
+            cropThreshold: 100000,
+            turboThreshold: 100000,
+            boostThreshold: 0,
+            events: {
+                load() {
+                    // Only draw the marker if data exists on load
+                    const series = this.series[0];
+                    if (series && series.points.length) {
+                        drawCurrentPriceMarker(this);
+                    }
+                }
+            }
+        },
+        rangeSelector: { enabled: false },
+        navigator: { enabled: false },
+        scrollbar: { enabled: false },
+        title: { text: '' },
+        xAxis: {
+            
+            type: 'datetime',
+            
+            labels: {
+                autoRotation: false,
+                // format: '{value:%l:%M %p}',
+                style: {
+                    color: 'rgba(170,170,170,0.85)',
+                    fontWeight: '600',
+                    fontSize: '11px'
+                }
+            },
+             dateTimeLabelFormats: {
+    hour: '%l %p',      // "2 PM"
+    day: '%b %e',
+    month: '%b \'%y',
+    year: '%Y'
+  },
+            // Even, non-overlapping ticks on an ORDINAL Highstock axis.
+            // The axis spaces points by INDEX (not clock time) and collapses
+            // non-trading gaps, so interpolating by time bunches labels up.
+            // Instead we sample the data array at evenly-spaced indices — that
+            // maps to evenly-spaced PIXELS — pinning the first & last points so
+            // a time sits at the very start and end with the rest filling in.
+            tickPositioner: function () {
+                if (!data || data.length < 2) return undefined; // before data loads
+                const TICKS = 6;
+                const lastIdx = data.length - 1;
+                const positions = [];
+                for (let i = 0; i < TICKS; i++) {
+                    const idx = Math.round((lastIdx * i) / (TICKS - 1));
+                    const t = data[idx][0];
+                    if (!positions.length || t > positions[positions.length - 1]) {
+                        positions.push(t); // keep strictly increasing (guards dupes)
+                    }
+                }
+                return positions;
+            },
+            // set min and max dynamically after data loads
+            lineColor: 'transparent',
+            tickColor: 'transparent',
+            gridLineColor: 'rgba(255,255,255,0.035)',
+            gridLineWidth: 0,
+            crosshair: {
+                width: 1,
+                color: 'rgba(75,75,75, 1)',
+                dashStyle: 'none'
+            }
+        },
+        yAxis:
+        [{
+            plotLines: [],   // openPrice line data loads
+            
+            // Framing is driven entirely by updateDynamicYAxis() via setExtremes.
+            // Turning these OFF stops Highcharts from stretching the axis out to
+            // "round" tick numbers above & below the data (what was squashing the line).
+            endOnTick: false,
+            startOnTick: false,
+            // With endOnTick:false, Highcharts hides the top-most tick label by
+            // default (showLastLabel resolves to false) — that's why the peak value
+            // ($599) was rendered into the DOM but forced visibility:hidden. Forcing
+            // these true makes the top label show the day's HIGH and the bottom its LOW.
+            showLastLabel: true,
+            showFirstLabel: true,
+            top: 15,
+            height: '95%',
+            title: { text: '' },
+            // No auto padding here — updateDynamicYAxis() pads proportionally instead.
+            maxPadding: 0,
+            minPadding: 0,
+            // Always draw the SAME count of evenly-spaced labels across the exact
+            // framed range, so every stock shows a decent, uniform set of y values
+            // that actually correspond to the visible peaks & troughs.
+            tickPositioner: function () {
+                // Generate labels from the day's real low/high (frameLow..frameHigh),
+                // NOT the padded axis min/max. This puts the bottom label on the
+                // actual trough and the top label on the actual peak, so no label is
+                // wasted on empty padding — while the ticks stay perfectly even.
+                const lo = frameLow, hi = frameHigh;
+                if (lo == null || hi == null || !isFinite(lo) || !isFinite(hi) || lo === hi) {
+                    return undefined; // before data loads -> let Highcharts decide
+                }
+                const TICKS = 6; // steps should be 7
+                const step = (hi - lo) / (TICKS - 1);
+                const positions = [];
+                for (let i = 0; i < TICKS; i++) positions.push(lo + step * i);
+                positions[positions.length - 1] = hi; // pin top tick, kill float drift
+                return positions;
+            },
+            labels: {
+                formatter: function () {
+                    const r = (this.axis.max - this.axis.min) || 0;
+                    const dp = r < 1 ? 3 : r < 20 ? 2 : r < 200 ? 1 : 0;
+                    return '$' + Highcharts.numberFormat(this.value, dp);
+                },
+                style: { color: 'rgba(170,170,170,0.85)', fontWeight: '600', fontSize: '11px' },
+                align: 'left',
+                x: 10
+            },
+            gridLineColor: 'transparent', // 'rgba(255,255,255,0.045)'
+            gridLineWidth: 0,
+            crosshair: {
+                width: 1,
+                color: 'rgba(75,75,75, 1)',
+                dashStyle: 'none'
+            },
+            opposite: true
+        },
+        {
+            // volume axis
+            title: { text: null },
+            labels: { enabled: false },
+            lineWidth: 0,
+            tickWidth: 0,
+            gridLineWidth: 0,
+            top: '90%',
+            height: '10%',
+            offset: 0
+        }
+        ],
+        legend: { enabled: false },
+        plotOptions: {
+            series: {
+                turboThreshold: 0,
+                animation: { duration: 900 }
+            },
+            areaspline: {
+                lineWidth: 2,
+                shadow: {
+                    color: 'rgba(0,255,90,0.16)',
+                    offsetX: 0,
+                    offsetY: 5,
+                    width: 16
+                },
+                marker: { enabled: false }
+            }
+        },
+        series: [
+            {
+                name: '',
+                data: data,   // starts empty
+                dataGrouping: { enabled: false },
+                color: {
+                    linearGradient: { x1: 0, y1: 0, x2: 1, y2: 0 },
+                    stops: [
+                        [0, '#22DD7A'],
+                        [0.5, '#1FD473'],
+                        [1, '#33E285']
+                    ]
+                },
+                fillColor: {
+                    linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+                    stops: [
+                        [0, 'rgba(34,221,122,0.16)'],
+                        [0.35, 'rgba(34,221,122,0.10)'],
+                        [0.7, 'rgba(34,221,122,0.03)'],
+                        [1, 'rgba(0,0,0,0)']
+                    ]
+                },
+                lineWidth: 2,
+                states: {
+                hover: {
+                    lineWidthPlus: 0   // 0 = no thickening; or use lineWidth: 4 for a fixed hover width
+                }
+            },
+                marker: { enabled: false }
+            },
+            {
+                name: '',
+                type: 'column',
+                data: volumeData,   // starts empty
+                dataGrouping: { enabled: false },
+                yAxis: 1,
+                color: 'rgba(34,221,122,0.28)',
+                borderWidth: 0,
+                pointPadding: 0,
+                groupPadding: 0.08
+            }
+        ],
+        tooltip: {
+            outside: true,
+            shared: true,
+            useHTML: true,
+            backgroundColor: 'rgba(10,10,10,0.92)',
+            borderColor: 'rgba(0,255,100,0.12)',
+            borderRadius: 8,
+            shadow: false,
+            style: { color: '#ddffe8', fontSize: '12px', fontWeight: '500' },
+            formatter: function () {
+                const date = Highcharts.dateFormat('%b %e, %Y %I:%M %p', this.x);
+                const value = this.y !== undefined ? this.y : (this.points && this.points[0] && this.points[0].y);
+                return `<div style="padding:6px 12px;white-space:nowrap;">
+                    <div style="color:rgba(170,170,170,0.7);font-size:11px;margin-bottom:4px;">${date}</div>
+                    <div style="display:flex;align-items:center;">
+                        <span style="width:8px;height:8px;border-radius:50%;background:#22DD7A;box-shadow:0 0 6px rgba(0,255,100,0.35);margin-right:8px;display:inline-block;"></span>
+                        <span style="font-size:15px;font-weight:700;color:#fff;">$${value}</span>
+                    </div>
+                </div>`;
+            }
+        },
+        exporting: { enabled: false },
+        credits: { enabled: false }
+    });
+
+    // ---------------------------------------------------------------
+    // CURRENT PRICE DISPLAY
+    // ---------------------------------------------------------------
+    const currentPriceEl = document.getElementById('current_price');
+    const currentPercentChangeEl = document.getElementById('current-percent-change');
+
+    function updateCurrentPriceDisplay(price) {
+        if (openPrice == null) return;
+        window.currentPrice = price;
+
+        const change = price - openPrice;
+        const changePercent = (change / openPrice) * 100;
+        const isPositive = change >= 0;
+
+
+        const caret = document.getElementById('header-change-caret');
+        if (caret) caret.src = isPositive ? '/icons/caret_up.svg' : '/icons/caret_down.svg';
+
+        // Sets the price change
+        if (currentPriceEl) {
+            currentPriceEl.style.color = isPositive ? '#19ff7a' : '#ff4d6d';
+            //Removes the negative if negative and sets the value
+            currentPriceEl.textContent = `$${Math.abs(change).toFixed(2)}`;
+        }
+        // Set the percent change
+        if (currentPercentChangeEl) {
+            currentPercentChangeEl.textContent = `(${changePercent.toFixed(2)}%)`;
+            currentPercentChangeEl.style.color = isPositive ? '#19ff7a' : '#ff4d6d';
+        }
+    }
+
+    // ---------------------------------------------------------------
+    // RENDER HELPERS
+    // ---------------------------------------------------------------
+       function drawCurrentPriceMarker(chartRef) {
+        const priceSeries = chartRef.series[0];
+        const point = priceSeries.points[priceSeries.points.length - 1];
+        if (!point) return;
+
+        const c = currentTrend();   // green when at/above open, red when below
+
+        const priceAxis = chartRef.yAxis[0];
+        const x = chartRef.plotLeft + point.plotX;
+        const y = priceAxis.top + point.plotY;
+        const labelText = `$${point.y.toFixed(2)}`;
+        const labelX = x + 14;
+        const labelY = y - 13;
+
+        // Price tag
+        if (chartRef.currentPriceTag) {
+            chartRef.currentPriceTag.attr({ text: labelText, x: labelX, y: labelY, fill: c.accent });
+        } else {
+            chartRef.currentPriceTag = chartRef.renderer
+                .label(labelText, labelX, labelY)
+                .attr({ fill: c.accent, padding: 6, r: 10, zIndex: 2000 })
+                .css({ color: '#08110b', fontWeight: '700', fontSize: '12px', overflow: 'visible', zIndex: 2000 })
+                .add();
+        }
+
+        // Solid dot
+        if (chartRef.currentDot) {
+            chartRef.currentDot.attr({ cx: x, cy: y, fill: c.dot });
+        } else {
+            chartRef.currentDot = chartRef.renderer
+                .circle(x, y, 3)
+                .attr({ fill: c.dot, stroke: 'none', 'stroke-width': 0, zIndex: 6 })
+                .add();
+        }
+
+        // Pulse ring
+        if (chartRef.currentPulse) {
+            chartRef.currentPulse.attr({ cx: x, cy: y, fill: c.pulse });
+        } else {
+            chartRef.currentPulse = chartRef.renderer
+                .circle(x, y, 5)
+                .attr({ fill: c.pulse, zIndex: 5 })
+                .add();
+
+            const pulseLoop = () => {
+                if (!chartRef.currentPulse) return;
+                chartRef.currentPulse.attr({ r: 5, opacity: 0.7 });
+                chartRef.currentPulse.animate(
+                    { r: 18, opacity: 0 },
+                    { duration: 1400, complete: pulseLoop }
+                );
+            };
+            pulseLoop();
+        }
+    }
+
+    function updateDynamicYAxis() {
+        if (openPrice == null || !data.length) return;
+
+        // Day's high & low so far — computed across ALL loaded data rather than
+        // the visible x-axis slice. This also fixes the "$0 baseline" bug: on
+        // first load xAxis.min/max aren't populated yet, so the old visible
+        // filter returned nothing and the axis was never set (areaspline then
+        // defaulted its baseline to 0).
+        let dayHigh = data[0][1];
+        let dayLow  = data[0][1];
+        for (const p of data) {
+            if (p[1] > dayHigh) dayHigh = p[1];
+            if (p[1] < dayLow)  dayLow  = p[1];
+        }
+
+        // UNIFORM FRAMING: pad by a fraction of the ACTUAL peak-to-trough spread,
+        // not by a % of the price. This is the whole fix — a stock that only moved
+        // $2 and one that moved $200 both fill the same share of the vertical, so
+        // every chart reads as clean peaks & troughs regardless of how volatile
+        // (or flat) the underlying data is.
+        const spread = (dayHigh - dayLow) || (dayHigh * 0.01) || 1; // guard flat data
+
+        // Asymmetric padding: more breathing room up top (headroom for the peak,
+        // the current-price pill and the hover tooltip), and just a sliver below
+        // so the trough sits near the floor instead of floating in dead space.
+        const TOP_PAD_FRAC    = 0.12;
+        const BOTTOM_PAD_FRAC = 0.06;
+
+        const newMin = dayLow  - spread * BOTTOM_PAD_FRAC;
+        const newMax = dayHigh + spread * TOP_PAD_FRAC;
+
+        // Ticks are drawn across the real data band (see tickPositioner), while
+        // the pad above/below is invisible margin outside the labeled range.
+        frameLow  = dayLow;
+        frameHigh = dayHigh;
+        console.log(frameHigh);
+
+        // Explicit extremes hold this framing in view until the next data
+        // update recomputes and sets a new bound.
+        chart.yAxis[0].setExtremes(newMin, newMax, false, false);
+    }
+// Graph line colors based on trend
+     const TREND_COLORS = {
+        up: {
+            line:  [[0, '#22DD7A'], [0.5, '#1FD473'], [1, '#33E285']],
+            fill:  'rgba(34,221,122,',        // alpha gets appended per stop
+            glow:  'rgba(0,255,90,0.16)',
+            accent:'#22DD7A',
+            dot:   '#2FE38A',
+            pulse: 'rgba(47,227,138,0.32)'
+        },
+        down: {
+            line:  [[0, '#F0475C'], [0.5, '#EA3B52'], [1, '#F76A84']],
+            fill:  'rgba(240,71,92,',
+            glow:  'rgba(255,70,95,0.16)',
+            accent:'#F0475C',                // matches your % change red
+            dot:   '#F0475C',
+            pulse: 'rgba(240,71,92,0.32)'
+        }
+    };
+
+    
+    function currentTrend() {
+        const up = openPrice == null || !data.length
+            ? true
+            : data[data.length - 1][1] >= openPrice;
+        return up ? TREND_COLORS.up : TREND_COLORS.down;
+    }
+
+    function updateAnchoredAreaGradient() {
+        const series = chart.series[0];
+        const yAxis = chart.yAxis[0];
+
+        const lastPoint = series.points[series.points.length - 1];
+        if (!lastPoint) return;
+
+        const c = currentTrend();
+
+        const FADE_PIXELS = 150;
+        let topPrice = -Infinity;
+        for (const p of series.points) {
+            if (p.y > topPrice) topPrice = p.y;
+        }
+        const topY = yAxis.toPixels(topPrice, false);
+        const bottomY = topY + FADE_PIXELS;
+
+        series.update({
+            // Line color follows the trend
+            color: {
+                linearGradient: { x1: 0, y1: 0, x2: 1, y2: 0 },
+                stops: c.line
+            },
+            // Soft glow under the line matches
+            shadow: { color: c.glow, offsetX: 0, offsetY: 5, width: 16 },
+            // Area fill, anchored in pixel space, tinted to match
+            fillColor: {
+                linearGradient: {
+                    x1: 0, y1: topY,
+                    x2: 0, y2: bottomY,
+                    gradientUnits: 'userSpaceOnUse'
+                },
+                stops: [
+                    [0,    c.fill + '0.16)'],
+                    [0.45, c.fill + '0.10)'],
+                    [0.85, c.fill + '0.03)'],
+                    [1,    'rgba(0,0,0,0)']
+                ]
+            }
+        }, false);
+
+
+        chart.series[1].update({ color: c.fill + '0.28)' }, false);
+    }
+    // ---------------------------------------------------------------
+    //  DATA LOADING
+    // ---------------------------------------------------------------
+
+    // Load a full dataset (e.g., when a range button is clicked or on page load)
+    // pricePoints  = [[timestamp, price], ...]
+    // volumePoints = [[timestamp, volume], ...]
+    function loadChartData(pricePoints, volumePoints, opts = {}) {
+        data = pricePoints;
+        volumeData = volumePoints || [];
+        openPrice = data.length ? data[0][1] : null;
+
+        // Per-range x-axis spacing + label format (driven by the swapper)
+        chart.xAxis[0].update({
+            tickInterval: opts.tickInterval,               // undefined = auto (fine for ALL)
+            labels: opts.labelFormat
+                ? { format: `{value:${opts.labelFormat}}` }
+                : {}
+        }, false);
+        // Update the open-price dotted line
+        chart.yAxis[0].update({
+            plotLines: openPrice != null ? [{
+                value: openPrice,
+                color: 'rgba(255,255,255,0.40)',
+                dashStyle: 'Dot',
+                width: 1,
+                zIndex: 3
+            }] : []
+        }, false);
+
+        // Set the data (smooth) and x-axis extents
+        chart.series[0].setData(data, false);
+        chart.series[1].setData(volumeData, false);
+
+        if (data.length) {
+            chart.xAxis[0].setExtremes(data[0][0], data[data.length - 1][0], false);
+            updateDynamicYAxis();
+        }
+
+        // Redraw first so the y-axis is scaled to the new extremes. The area
+        // gradient uses pixel-space (userSpaceOnUse) coordinates via toPixels(),
+        // so it MUST be computed after the axis is laid out — otherwise it reads
+        // stale pixel positions and the fill renders off-screen (looks missing).
+        chart.redraw();
+
+        if (data.length) {
+            updateAnchoredAreaGradient();
+            chart.redraw();
+            updateCurrentPriceDisplay(data[data.length - 1][1]);
+            drawCurrentPriceMarker(chart);
+        }
+    }
+
+    // Append a single new real data point (smooth update — same mechanism
+    // the simulation used, just fed by real data instead of generated).
+    // Call this if/when you add live streaming later.
+    function appendPoint(timestamp, price, volume) {
+        data.push([timestamp, price]);
+        volumeData.push([timestamp, volume]);
+
+        chart.series[0].addPoint([timestamp, price], false, false);
+        chart.series[1].addPoint([timestamp, volume], false, false);
+
+        chart.xAxis[0].setExtremes(data[0][0], timestamp, false);
+
+        updateDynamicYAxis();
+        chart.redraw();
+
+        // Gradient after layout — see note in loadChartData.
+        updateAnchoredAreaGradient();
+        chart.redraw();
+
+        updateCurrentPriceDisplay(price);
+        drawCurrentPriceMarker(chart);
+    }
+
+    // Expose so your button-wiring / fetch code can call these
+    window.loadChartData = loadChartData;
+    window.appendPoint = appendPoint;
+
+});
+</script>
+
+<!-- Graph Styles -->
+<style>
+    .cancel-button {
+        border-radius: 6px;
+        display: flex; align-items: center; justify-content: center; 
+        padding: 8px; 
+
+        will-change: contents;
+
+        border-radius: 7px; width: 74px; height: 32px;
+        padding: 4px 0px; color: white; 
+        background-color: rgb(38, 38, 38); 
+
+        position: absolute; bottom: 10px; right: 100px;
+    }
+    .cancel-button:hover {
+        cursor: pointer; 
+        opacity: 0.8;
+    }
+    /* =========================================================
+       TRADE POPUP 
+       ========================================================= */
+    .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(6, 7, 9, 0.66);
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+        z-index: 9999998;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.35s ease;
+    }
+    .overlay.show { visibility: visible; opacity: 1; }
+
+    .kebab-menu {
+        position: relative;
+        display: inline-block;
+        z-index: 9999999;
+    }
+
+    /* ---- Modal shell ---- */
+    .menu-content {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 400px;
+        max-height: 92vh;
+        box-sizing: border-box;
+        padding: 22px 24px 24px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        z-index: 10000;
+
+        background: linear-gradient(180deg, #191A1D 0%, #0E0F11 100%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 22px;
+        box-shadow:
+            0 30px 80px rgba(0, 0, 0, 0.6),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+        visibility: hidden;
+        opacity: 0;
+        transform: translate(-50%, -47%) scale(0.96);
+        transform-origin: center;
+        transition:
+            opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+            transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .menu-content.show {
+        visibility: visible;
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    /* ambient top glow that follows buy/sell mode */
+    .menu-content::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 170px;
+        pointer-events: none;
+        z-index: 0;
+        transition: background 0.4s ease;
+    }
+    .mode-buy::before  { background: radial-gradient(90% 130% at 50% -35%, rgba(34, 221, 122, 0.16) 0%, rgba(34, 221, 122, 0) 60%); }
+    .mode-sell::before { background: radial-gradient(90% 130% at 50% -35%, rgba(239, 68, 68, 0.16) 0%, rgba(239, 68, 68, 0) 60%); }
+    .menu-content > * { position: relative; z-index: 1; }
+
+    /* ---- Header ---- */
+    .trade-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .trade-stock { display: flex; align-items: center; gap: 12px; }
+    .trade-logo {
+        width: 42px; height: 42px;
+        display: flex; align-items: center; justify-content: center;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .trade-logo img { width: 24px; height: 24px; border-radius: 8px; }
+    .trade-stock-meta { display: flex; flex-direction: column; gap: 3px; }
+    .trade-ticker { font-size: 17px; font-weight: 700; color: #fff; letter-spacing: 0.3px; }
+    .trade-sub { font-size: 11px; color: rgba(255, 255, 255, 0.45); }
+
+    .popup-close-button {
+        position: relative;
+        width: 34px; height: 34px;
+        padding: 0;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+    }
+    .popup-close-button:hover { background: rgba(255, 255, 255, 0.1); }
+    .popup-close-button::before,
+    .popup-close-button::after {
+        content: "";
+        position: absolute;
+        top: 50%; left: 50%;
+        width: 14px; height: 1.5px;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 2px;
+    }
+    .popup-close-button::before { transform: translate(-50%, -50%) rotate(45deg); }
+    .popup-close-button::after  { transform: translate(-50%, -50%) rotate(-45deg); }
+
+    /* ---- Price hero ---- */
+    .trade-hero {
+        margin-top: 18px;
+        padding: 16px 18px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .trade-hero-label {
+        font-size: 11px; letter-spacing: 0.6px; text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+    }
+    .trade-hero-price { display: flex; align-items: baseline; gap: 10px; margin-top: 6px; }
+    .trade-hero-value { font-size: 28px; font-weight: 700; color: #fff; letter-spacing: 0.3px; }
+    .trade-hero-change { font-size: 13px; font-weight: 600; color: #22DD7A; }
+    .trade-quotes { display: flex; gap: 10px; margin-top: 14px; }
+    .trade-quote {
+        flex: 1;
+        display: flex; flex-direction: column; gap: 3px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .trade-quote-label { font-size: 11px; color: rgba(255, 255, 255, 0.4); }
+    .trade-quote-value { font-size: 14px; font-weight: 600; color: rgba(255, 255, 255, 0.9); }
+    .trade-quote-value em { font-style: normal; font-size: 11px; color: rgba(255, 255, 255, 0.4); margin-left: 5px; }
+
+    /* ---- Buy/Sell segmented control ---- */
+    .toggle-switch {
+        position: relative;
+        display: flex;
+        height: 44px;
+        margin-top: 18px;
+        padding: 4px;
+        box-sizing: border-box;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 12px;
+        cursor: pointer;
+    }
+    .toggle-option {
+        flex: 1;
+        display: flex; align-items: center; justify-content: center;
+        z-index: 1;
+        font-size: 14px; font-weight: 600;
+        color: rgba(255, 255, 255, 0.5);
+        user-select: none;
+        transition: color 0.25s ease;
+    }
+    .slider {
+        position: absolute;
+        top: 4px; left: 4px; bottom: 4px;
+        width: calc(50% - 4px);
+        border-radius: 9px;
+        z-index: 0;
+        transition:
+            transform 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+            background 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+    .mode-buy .slider {
+        transform: translateX(0);
+        background: linear-gradient(135deg, #22DD7A 0%, #16A34A 100%);
+        box-shadow: 0 4px 14px rgba(34, 197, 94, 0.35);
+    }
+    .mode-buy #buy-toggle-option { color: #04140b; }
+    .mode-sell .slider {
+        transform: translateX(100%);
+        background: linear-gradient(135deg, #F76A84 0%, #DC2626 100%);
+        box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35);
+    }
+    .mode-sell #sell-toggle-option { color: #1a0505; }
+
+    /* ---- Balance line ---- */
+    .trade-balance {
+        display: flex; align-items: center; justify-content: space-between;
+        margin-top: 14px;
+        padding: 0 2px;
+    }
+    .trade-balance-label { font-size: 13px; color: rgba(255, 255, 255, 0.55); }
+    .trade-balance-value { font-size: 14px; font-weight: 600; color: rgba(255, 255, 255, 0.9); }
+
+    /* ---- Fields ---- */
+    .trade-field {
+        display: flex; align-items: center; justify-content: space-between;
+        margin-top: 12px;
+    }
+    .trade-field-label { font-size: 14px; color: rgba(255, 255, 255, 0.6); }
+    .popup-input {
+        width: 150px; height: 46px;
+        padding: 0 16px;
+        box-sizing: border-box;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        color: #fff;
+        font-family: inherit;
+        font-size: 15px; font-weight: 600;
+        text-align: right;
+        outline: none;
+        transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .popup-input:focus {
+        border-color: rgba(232, 99, 26, 0.55);
+        background: rgba(255, 255, 255, 0.06);
+    }
+    .popup-input[readonly] { color: rgba(255, 255, 255, 0.55); cursor: default; }
+    .popup-input::-webkit-outer-spin-button,
+    .popup-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    .popup-input[type=number] { -moz-appearance: textfield; appearance: textfield; }
+
+    /* ---- Estimate ---- */
+    .trade-estimate {
+        display: flex; align-items: center; justify-content: space-between;
+        margin-top: 18px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    #popup-estimated-tab { font-size: 15px; font-weight: 700; color: #fff; }
+    #estimated-num-value { font-size: 18px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+
+    /* ---- Actions ---- */
+    .trade-actions { display: flex; gap: 10px; margin-top: 20px; }
+    .popup-button {
+        flex: 1;
+        height: 48px;
+        border: none;
+        border-radius: 12px;
+        font-family: inherit;
+        font-size: 15px; font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.15s ease, filter 0.2s ease, background 0.25s ease;
+    }
+    .popup-button:active { transform: scale(0.98); }
+    #cancel-button {
+        flex: 0 0 118px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        color: rgba(255, 255, 255, 0.75);
+    }
+    #cancel-button:hover { background: rgba(255, 255, 255, 0.09); }
+    #popup-buy-or-sell-button:hover { filter: brightness(1.08); }
+    .mode-buy #popup-buy-or-sell-button {
+        background: linear-gradient(135deg, #22DD7A 0%, #16A34A 100%);
+        color: #04140b;
+        box-shadow: 0 6px 18px rgba(34, 197, 94, 0.32);
+    }
+    .mode-sell #popup-buy-or-sell-button {
+        background: linear-gradient(135deg, #F76A84 0%, #DC2626 100%);
+        color: #fff;
+        box-shadow: 0 6px 18px rgba(239, 68, 68, 0.32);
+    }
+</style>
+
+<!-- Popup script -->
+<script>
+    const sliderAction = document.getElementById('slider-action');
+    const buyToggleOption = document.getElementById("buy-toggle-option");
+    const sellToggleOption = document.getElementById("sell-toggle-option");
+    // Buy/Sell theming is driven by a mode class on the modal root; the slider,
+    // action button and accent colors all react via CSS (see .mode-buy/.mode-sell).
+    function moveSlider(tab) {
+        const menu = document.getElementById('menu-content');
+        if (tab === 'sell') {
+            menu.classList.remove('mode-buy');
+            menu.classList.add('mode-sell');
+            buySellButton.textContent = "Sell";
+            document.getElementById("buy-tab-content").style.display = "none";
+            document.getElementById("sell-tab-content").style.display = "flex";
+            document.getElementById("popup-estimated-tab").textContent = "Estimated Return";
+        } else {
+            menu.classList.remove('mode-sell');
+            menu.classList.add('mode-buy');
+            buySellButton.textContent = "Buy";
+            document.getElementById("buy-tab-content").style.display = "flex";
+            document.getElementById("sell-tab-content").style.display = "none";
+            document.getElementById("popup-estimated-tab").textContent = "Estimated Cost";
+        }
+    }
+    function toggleMenu(selling) {
+        const menuContent = document.getElementById('menu-content');
+
+        const overlay = document.getElementById('overlay');
+            if (menuContent.classList.contains('show')) {
+                // Collapse the menu
+                menuContent.classList.remove('show');
+                overlay.classList.remove('show');
+                setTimeout(() => {
+                    menuContent.style.visibility = 'hidden';
+                    overlay.style.visibility = 'hidden';
+                }, 300); // Match the duration of the transition
+            } else {
+                // Expand the menu
+                menuContent.style.visibility = 'visible';
+                overlay.style.visibility = 'visible';
+                setTimeout(() => {
+                    menuContent.classList.add('show');
+                    overlay.classList.add('show');
+                    menuContent.focus(); // Shift focus to the popup
+            }, 0);
+
+            if(selling) {
+                moveSlider('sell');
+            } else {
+                moveSlider('buy');
+            }
+        }
+    }
+
+    function closePopup() {
+        const menuContent = document.getElementById('menu-content');
+        const overlay = document.getElementById('overlay');
+        menuContent.classList.remove('show');
+        overlay.classList.remove('show');
+        setTimeout(() => {
+            menuContent.style.visibility = 'hidden';
+            overlay.style.visibility = 'hidden';
+        }, 300); // Match the duration of the transition
+    }
+
+    // Add event listener to the close button
+    document.getElementById('closeMenu').onclick = closePopup;
+
+    const buySellButton = document.getElementById("popup-buy-or-sell-button");
+
+    function switchTab(tab) {
+    // Toggle active class on options
+    document.querySelectorAll('.toggle-option').forEach(option => {
+        option.classList.remove('active');
+    });
+    document.querySelector(`.toggle-option[onclick="switchTab('${tab}')"]`).classList.add('active');
+
+    // Move the slider
+    if(tab === 'buy' || tab === 'sell') {
+        moveSlider(tab);
+    }
+
+    const sliderType = document.getElementById('slider-type');
+    if(tab === "market") {
+        sliderType.style.transform = 'translateX(0%)';
+        document.getElementById("market-tab-content").style.display = "flex";
+        document.getElementById("limit-tab-content").style.display = "none";
+    } else if(tab === "limit") {
+        sliderType.style.transform = 'translateX(100%)';
+        document.getElementById("market-tab-content").style.display = "none";
+        document.getElementById("limit-tab-content").style.display = "flex";
+    }
+}
+
+    const popupQuantityInput = document.getElementById("popup-quantity-input");
+    const estimatedCostValue = document.getElementById("estimated-num-value");
+    const SHARE_PRICE = 220.44; // demo current price used for the estimate
+    popupQuantityInput.addEventListener("input", function() {
+        const qty = parseFloat(popupQuantityInput.value);
+        if (!qty || qty < 0) {
+            estimatedCostValue.textContent = "$0.00";
+            return;
+        }
+        const total = qty * SHARE_PRICE;
+        estimatedCostValue.textContent = "$" + total.toLocaleString("en-US", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+    });
+</script>
+
+<style>
+
+    .related-stocks-card {
+        height: 140px;
+        width: 310px;
+        border-radius: 6px;
+        background-color: rgb(33,33,33);
+        border: 1px solid rgb(50, 50, 50);
+
+        margin: 0px 4px;
+        margin-top: 75px;
+        
+        position: relative;
+    }
+
+    .related-stocks-card:hover {
+        cursor: pointer;
+        background-color: rgb(38,38,38);
+        transform: scale(1.02);
+
+        box-shadow:
+            0 8px 24px rgba(0, 0, 0, 0.5),          /* the lift / depth */
+            0 0 0 1px rgba(255, 255, 255, 0.06),    /* faint light edge — reads as "raised" on dark */
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);/* subtle top inner highlight */
+    }
+
+    .related-stocks-card-logo { position: absolute; left: 8px; top: 10px }
+    .related-stocks-card-ticker { position: absolute; left: 43px; top: 12px; font-size: 13px; }
+    .related-stocks-card-company-name { position: absolute; left: 43px; top: 30px; color: rgb(190, 190, 190); font-size: 11px; }
+    .related-stocks-card-price { position: absolute; left: 12px; bottom: 12px; font-weight: bold; font-size: 13px; }
+    .related-stocks-card-percent-change.positive {position: absolute; right: 12px; bottom: 12px; color: var(--data-green); font-size: 13px; display: flex; align-items: center; }
+    .related-stocks-card-percent-change.negative {position: absolute; right: 12px; bottom: 12px; color: var(--data-red); font-size: 13px; display: flex; align-items: center; }
+
+    #add-to-watchlist-button {
+        position: absolute; right: 32px; top: 65px; 
+        background-color: rgb(44,44,44); border: 1px solid rgb(60, 60, 60); font-size: 13px;  padding: 9px 15px; border-radius: 10px; display: flex; align-items: center;
+        font-size: 12px;
+     }
+    #add-to-watchlist-button:hover {
+        cursor: pointer;
+        background-color: rgb(55,55,55);
+    }
+</style>
+
+<script type="module">
+
+  Highcharts.chart('msft-graph', {
+    chart: {
+      type: 'spline',
+      backgroundColor: 'transparent',
+      spacing: [0, 0, 0, 0],
+      margin: [0, 0, 0, 0]
+    },
+    title: {
+      text: null
+    },
+    credits: {
+      enabled: false
+    },
+    legend: {
+      enabled: false
+    },
+    exporting: {
+      enabled: false
+    },
+    tooltip: {
+      enabled: false
+    },
+    xAxis: {
+      visible: false,
+      lineWidth: 0,
+      tickWidth: 0,
+      labels: {
+        enabled: false
+      }
+    },
+    yAxis: {
+        
+      visible: false,
+      gridLineWidth: 0,
+      title: {
+        text: null
+      }
+    },
+    plotOptions: {
+      series: {
+
+    turboThreshold: 0,
+    animation: false,
+    dataGrouping: { enabled: false },
+        states: {
+            hover: {
+            lineWidth: 1,
+            enabled: false
+            }
+        },
+        marker: {
+          enabled: false
+        },
+        lineWidth: 1.75,
+        dataGrouping: { enabled: false }, 
+        color: 'rgb(96, 252, 96)',
+        animation: false
+      }
+    },
+    series: [{
+    dataGrouping: { enabled: false },
+      data: [
+        100, 101, 100.12, 99.02, 100.28, 97.50, 98.50, 100.89, 101.03, 101.45, 
+        102, 102.54, 105.20, 106, 105, 107, 110, 109, 109.12, 108.90, 
+        106.43, 105.65, 105.20, 107.45, 109.45, 
+    ]
+    }]
+  });
+</script>
+
+
+<script type="module">
+
+  Highcharts.chart('sandp-graph', {
+    chart: {
+      type: 'spline',
+      backgroundColor: 'transparent',
+      spacing: [0, 0, 0, 0],
+      margin: [0, 0, 0, 0],
+      
+    },
+    title: {
+      text: null
+    },
+    credits: {
+      enabled: false
+    },
+    legend: {
+      enabled: false
+    },
+    exporting: {
+      enabled: false
+    },
+    tooltip: {
+      enabled: false
+    },
+    xAxis: {
+      visible: false,
+      lineWidth: 0,
+      tickWidth: 0,
+      labels: {
+        enabled: false
+      }
+    },
+    yAxis: {
+      visible: false,
+      gridLineWidth: 0,
+      title: {
+        text: null
+      }
+    },
+    plotOptions: {
+      series: {
+        states: {
+            hover: {
+            lineWidth: 1,
+            enabled: false
+            }
+        },
+        shadow: {
+    color: 'rgba(99, 255, 102, 0.22)',
+    offsetX: 0,
+    offsetY: 0,
+    opacity: 1,
+    width: 10
+  },
+        marker: {
+          enabled: false
+        },
+        lineWidth: 1.75, // alternative is 2px
+        
+        color: 'rgb(109, 244, 109)',
+        animation: false
+      }
+    },
+    series: [{
+      data: [
+        123.00, 123.84, 122.70, 123.98, 123.41, 122.25, 121.10, 123.93, 122.78, 124.62, 
+        124.49, 124.31, 125.18, 124.02, 125.88, 124.73, 127.58, 125.44, 121.29, 123.12, 
+        124.98, 125.83, 122.69, 124.51, 126.36, 127.22, 129.07, 125.92, 126.78, 111.61, 
+        109.48, 108.32, 107.17, 112.03, 110.88, 113.71,114.56, 116.41, 118.26, 116.11,
+        119.96, 124.79, 123.64, 126.49, 129.31, 130.15]
+    }]
+  });
+</script>
+
+<script type="module">
+
+  Highcharts.chart('pins-graph', {
+    chart: {
+      type: 'spline',
+      backgroundColor: 'transparent',
+      spacing: [0, 0, 0, 0],
+      margin: [0, 0, 0, 0]
+    },
+    title: {
+      text: null
+    },
+    credits: {
+      enabled: false
+    },
+    legend: {
+      enabled: false
+    },
+    exporting: {
+      enabled: false
+    },
+    tooltip: {
+      enabled: false
+    },
+    xAxis: {
+      visible: false,
+      lineWidth: 0,
+      tickWidth: 0,
+      labels: {
+        enabled: false
+      }
+    },
+    yAxis: {
+      visible: false,
+      gridLineWidth: 0,
+      title: {
+        text: null
+      }
+    },
+    plotOptions: {
+      series: {
+        fillColor: {
+    linearGradient: [0, 0, 0, 1],
+    stops: [
+      [0, 'rgba(99, 255, 102, 0.28)'],
+      [1, 'rgba(99, 255, 102, 0.00)']
+    ]
+  },
+        states: {
+            hover: {
+            lineWidth: 2,
+            enabled: false
+            }
+        },
+         shadow: {
+    color: 'rgba(255, 92, 92, 0.18)',
+    offsetX: 0,
+    offsetY: 0,
+    opacity: 1,
+    width: 10
+  },
+        marker: {
+          enabled: false
+        },
+        lineWidth: 1.75,
+        
+        color: 'rgb(244, 109, 109)',
+        animation: false
+      }
+    },
+    series: [{
+      data: [123.00, 122.84, 122.70, 123.98, 124.41, 124.25, 123.10, 124.93, 122.78, 121.62, 121.49, 121.31,
+120.18, 121.02, 120.88, 120.73, 119.58, 119.44, 119.29, 117.12, 118.98, 119.83, 118.69, 116.51,
+113.36, 112.22, 108.07, 109.92, 112.78, 111.61, 109.48, 108.32, 107.17, 112.03, 110.88, 113.71,
+114.56, 113.41, 110.26, 108.11, 107.96, 103.79, 105.64, 102.49, 103.31, 106.15]
+    }]
+  });
+</script>
+
+<script type="module">
+
+  Highcharts.chart('openai-graph', {
+    chart: {
+      type: 'spline',
+      backgroundColor: 'transparent',
+      spacing: [0, 0, 0, 0],
+      margin: [0, 0, 0, 0],
+      
+    },
+    title: {
+      text: null
+    },
+    credits: {
+      enabled: false
+    },
+    legend: {
+      enabled: false
+    },
+    exporting: {
+      enabled: false
+    },
+    tooltip: {
+      enabled: false
+    },
+    xAxis: {
+      visible: false,
+      lineWidth: 0,
+      tickWidth: 0,
+      labels: {
+        enabled: false
+      }
+    },
+    yAxis: {
+      visible: false,
+      gridLineWidth: 0,
+      title: {
+        text: null
+      }
+    },
+    plotOptions: {
+      series: {
+        states: {
+            hover: {
+            lineWidth: 1,
+            enabled: false
+            }
+        },
+        shadow: {
+    color: 'rgba(99, 255, 102, 0.22)',
+    offsetX: 0,
+    offsetY: 0,
+    opacity: 1,
+    width: 10
+  },
+        marker: {
+          enabled: false
+        },
+        lineWidth: 1.75,
+        
+        color: 'rgb(109, 244, 109)',
+        animation: false
+      }
+    },
+    series: [{
+      data: [
+          100.00, 100.85, 97.42, 95.30, 96.10, 99.65, 99.55, 100.20, 105.78, 105.60,
+  104.15, 103.70, 102.95, 103.85, 104.70, 105.40, 108.90, 112.75, 109.30, 108.85,
+  105.65, 107.20, 106.70, 107.55, 104.10, 102.60, 104.45, 106.05, 108.55, 109.30,
+  108.80, 109.60, 110.25, 109.75, 112.55, 111.10, 110.60, 113.40, 112.00, 113.50,
+  112.30, 111.85, 113.70, 114.40, 116.10, 115.20
+    ]
+    }]
+  });
+</script>
+
+
+<style>
+  .ring-card {
+    width: 62px;
+    height: 62px;
+    /* background: #151515; */
+    background: rgb(28, 28, 28);
+    border-radius: 18px;
+    display: grid;
+    place-items: center;
+    margin-top: 4px;
+  }
+
+  .progress-ring {
+    width: 62px;
+    height: 62px;
+  }
+
+  .track {
+    fill: none;
+    stroke: #2c2c2c;
+    stroke-width: 8;
+  }
+
+  .red-segment,
+  .progress {
+    fill: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: 60px 60px;
+    stroke-dasharray: 301.59;
+  }
+
+  .red-segment {
+    stroke: #ff5c5c;
+    stroke-dashoffset: 0;
+    stroke-dasharray: 18 301.59;
+  }
+
+  .progress {
+    stroke:  #59e85f;
+    stroke-dashoffset: 78.41;
+    filter: drop-shadow(0 0 6px rgba(89, 232, 95, 0.22));
+    transition: stroke-dashoffset 0.5s ease;
+  }
+
+  .ring-label {
+    font: 600 24px/1 system-ui, sans-serif;
+    fill: #f2f2f2;
+    dominant-baseline: middle;
+  }
+</style>
+
+<script>
+  const circle = document.querySelector('.progress');
+  const label = document.querySelector('.ring-label');
+  const radius = 48;
+  const circumference = 2 * Math.PI * radius;
+
+  function setProgress(percent) {
+    const redLength = 18; // small red cap
+    const greenLength = (percent / 100) * circumference;
+
+    circle.style.strokeDasharray = `${greenLength} ${circumference}`;
+    circle.style.strokeDashoffset = `${redLength}`;
+    label.textContent = `${percent}%`;
+  }
+
+  setProgress(84);
+</script>
+
+<!-- // Hover and Click Effects -> left aside -->
+<script>
+    // Nav icon hover swapping.
+    // Base icon (mouseout) lives at icons/nav_icons/<name>.svg
+    // Hover icon (mouseover) lives at icons/nav_icons/<name>_hover.svg
+    const NAV_ICON_BASE = "icons/nav_icons/";
+
+    const navIcons = [
+        { trigger: "nav-home",        img: "home-icon",        icon: "nav_home_house" },
+        { trigger: "nav-explore",     img: "explore-icon",     icon: "nav_explore_compass" },
+        { trigger: "nav-leaderboard", img: "leaderboard-icon", icon: "nav_leaderboard_trophy" },
+        { trigger: "nav-chats",       img: "chats-icon",       icon: "nav_messages_chats" },
+        { trigger: "nav-group",       img: "group-icon",       icon: "nav_groups_users" },
+        { trigger: "nav-portfolio",   img: "portfolio-icon",   icon: "nav_portfolio_chart" },
+        { trigger: "nav-watchlist",   img: "watchlist-icon",   icon: "nav_watchlist_bookmark" },
+        { trigger: "signOutButton",   img: null,               icon: "nav_logout_exit" },
+    ];
+
+    navIcons.forEach(({ trigger, img, icon }) => {
+        const triggerEl = document.getElementById(trigger);
+        if (!triggerEl) return;
+
+        const imgEl = img ? document.getElementById(img) : triggerEl.querySelector("img");
+        if (!imgEl) return;
+
+        const baseSrc = `${NAV_ICON_BASE}${icon}.svg`;
+        const hoverSrc = `${NAV_ICON_BASE}${icon}_hover.svg`;
+
+        imgEl.src = baseSrc;
+        triggerEl.addEventListener("mouseover", () => { imgEl.src = hoverSrc; });
+        triggerEl.addEventListener("mouseout", () => { imgEl.src = baseSrc; });
+    });
+
+    // Watchlist toggle: swap star icon + label based on state.
+    const watchlistButton = document.getElementById("add-to-watchlist-button");
+    const watchlistStar = document.getElementById("watchlist-star-icon");
+    const watchlistLabel = document.getElementById("watchlist-button-label");
+
+    const WATCHLIST_STAR_EMPTY = "/icons/add_watchlist_star.svg";
+    const WATCHLIST_STAR_FULL = "/icons/add_watchlist_star_full.svg";
+
+    let isInWatchlist = false;
+
+    function renderWatchlistState() {
+        watchlistStar.src = isInWatchlist ? WATCHLIST_STAR_FULL : WATCHLIST_STAR_EMPTY;
+        watchlistLabel.textContent = isInWatchlist ? "Added to Watchlist" : "Add to Watchlist";
+        watchlistButton.classList.toggle("in-watchlist", isInWatchlist);
+    }
+
+    watchlistButton.addEventListener("click", () => {
+        isInWatchlist = !isInWatchlist;
+        renderWatchlistState();
+    });
+
+    renderWatchlistState();
+</script>
+
+<style>
+.range-card {
+  padding: 18px 22px;
+  border-radius: 14px;
+  width: 200px;
+  color: #fff;
+}
+
+.range-title {
+    margin-top: -2px;
+  color: #b7b7b7;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.range-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.range-value {
+  font-size: 13px;
+  color: rgb(225, 225, 225);
+  min-width: 38px;
+  font-weight: bold;
+}
+
+.range-bar {
+  position: relative;
+  flex: 1;
+  height: 14px;
+}
+
+.range-track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #6b6b6b;
+  border-radius: 999px;
+  transform: translateY(-50%);
+}
+
+.range-fill {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 58%;
+  height: 4px;
+  background: #ff8a00;
+  border-radius: 999px;
+  transform: translateY(-50%);
+}
+
+.range-thumb {
+  position: absolute;
+  left: 58%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  background: #ff8a00;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 3px rgba(255, 138, 0, 0.15);
+}
+
+.button-header {
+    opacity: 0.9;
+    transition: 0.3s transform ease-in-out;
+    color: rgb(235,220, 210);
+}
+.button-header:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+.button-header:active {
+     transform: scale(0.99);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+</style>
+
+
+<script>
+
+// Chat Scripts
+const MAX_LEN = 200;
+const input = document.getElementById("chat-input");
+const counter = document.getElementById("charCounter");
+
+function updateCounter() {
+  const len = input.value.length;
+  counter.textContent = `${len}/${MAX_LEN}`;
+  // optional: warn when close to the limit
+  counter.classList.toggle("char-counter--limit", len >= MAX_LEN);
+}
+
+input.addEventListener("input", updateCounter);
+updateCounter(); // initialize on load
+
+
+const chatContainer = document.getElementById("chatMessageContainer");
+const chatInput = document.getElementById("chat-input");
+const sendBtn = document.getElementById("send-chat-btn");
+
+
+
+  function isAtBottom(el, threshold = 50) {
+    return el.scrollHeight - el.scrollTop - el.clientHeight < threshold;
+  }
+
+  function addChatMessage({ username, timeAgo, comment, pfpSrc }) {
+    const wasAtBottom = isAtBottom(chatContainer); // capture first
+    const message = document.createElement("div");
+
+    message.className = "chat-message";
+    message.style.position = "relative";
+
+    const img = document.createElement("img");
+    img.className = "user-pfp";
+    img.src = pfpSrc;
+    img.alt = `${username} profile picture`;
+
+    const usernameSpan = document.createElement("span");
+    usernameSpan.className = "chat-username";
+    usernameSpan.textContent = username;
+
+    const timeSpan = document.createElement("span");
+    timeSpan.className = "chat-time";
+    timeSpan.textContent = ` ${timeAgo}`;
+    usernameSpan.appendChild(timeSpan);
+
+    const commentSpan = document.createElement("span");
+    commentSpan.className = "chat-comment";
+
+    const rendered = emojify(comment);
+
+if (isEmojiOnly(rendered)) {
+  commentSpan.classList.add("emoji-only");
+
+}
+    commentSpan.textContent = rendered;
+    // commentSpan.textContent = comment;
+
+    message.appendChild(img);
+    message.appendChild(usernameSpan);
+    message.appendChild(commentSpan);
+
+    chatContainer.appendChild(message);
+    chatContainer.scrollTo({
+      top: chatContainer.scrollHeight,
+      behavior: "smooth"
+    });
+
+    resetChatInput();
+
+  }
+
+function isEmojiOnly(str) {
+  if (!str) return false;
+  const trimmed = str.trim();
+  if (trimmed.length === 0) return false;
+
+  // Remove all emoji (incl. variation selectors, ZWJ sequences, skin tones).
+  const withoutEmoji = trimmed.replace(
+    /(\p{Extended_Pictographic}|\p{Emoji_Presentation}|\u200d|\uFE0F|[\u{1F1E6}-\u{1F1FF}])/gu,
+    ""
+  );
+
+  // If nothing but whitespace remains, it was all emoji.
+  return withoutEmoji.trim().length === 0;
+}
+
+function resetChatInput() {
+  // textarea
+  input.value = "";
+  input.style.height = "auto";   // collapse back to 1 line
+  input.style.overflowY = "hidden";
+
+  // counter
+  if (counter) {
+    counter.textContent = "0/200";
+    counter.classList.remove("char-counter--limit");
+  }
+}
+
+  function sendCurrentInputMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return; // ignore empty messages
+
+    addChatMessage({
+      username: "Ian Trachl",
+      timeAgo: "now",
+      comment: text,
+      pfpSrc: "/demo_user_pfps/GitHub Pfp.jpg"
+    });
+
+    chatInput.value = ""; // reset -> placeholder shows again
+  }
+
+  // Click send
+  sendBtn.addEventListener("click", sendCurrentInputMessage);
+
+  // Press Enter to send (Shift+Enter can be reserved for newline if using textarea)
+  chatInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      sendCurrentInputMessage();
+    }
+  });
+</script>
+
+<script>
+
+// Emojis! Key binds script for literal typed emoji conversion
+function emojify(text) {
+    const map = {
+      ":)": "🙂",
+      ":-)": "🙂",
+      ":D": "😄",
+      ":-D": "😄",
+      "XD": "😆",
+      "xD": "😆",
+      ":(": "🙁",
+      ":-(": "🙁",
+      ";)": "😉",
+      ":P": "😛",
+      ":p": "😛",
+      "<3": "❤️",
+      ":o": "😮",
+      ":O": "😮",
+      ":0": "😮",
+      ":|": "😐",
+      "-_-": "😑",
+      "0_0": "😳",
+      "o_o": "😳",
+      "O_O": "😳",
+      ":/" : "😕",
+      ">_<" : "😣",
+      ";(" : "😭",
+      ":3" : "😼",
+      ":?" : "🤔"
+    };
+
+    // Replace each emoticon with its emoji.
+    // We escape special regex chars so symbols like ) ( | work safely.
+    for (const [emoticon, emoji] of Object.entries(map)) {
+      const escaped = emoticon.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const pattern = new RegExp(escaped, "g");
+      text = text.replace(pattern, emoji);
+    }
+
+    return text;
+  }
+</script>
+
+<!-- // Update the chat input field limit when a user types -->
+<script>
+
+const MAX_H = 200; // ~5-6 lines, then it scrolls internally
+
+function autoResize() {
+  input.style.height = "auto"; // reset first so it can shrink too
+  const next = Math.min(input.scrollHeight, MAX_H);
+  input.style.height = next + "px";
+  input.style.overflowY = input.scrollHeight > MAX_H ? "auto" : "hidden";
+}
+
+input.addEventListener("input", autoResize);
+autoResize(); // initialize
+</script>
+
+<script>
+  // Chat input focus glow: toggle a .focused class on the surrounding
+  // .chat-input-area so its border-color animates (transition defined in CSS).
+  (function () {
+    const field = document.getElementById("chat-input");
+    const box = field ? field.closest(".chat-input-area") : null;
+    if (!field || !box) return;
+
+    field.addEventListener("focus", () => box.classList.add("focused"));
+    field.addEventListener("blur",  () => box.classList.remove("focused"));
+  })();
+</script>
