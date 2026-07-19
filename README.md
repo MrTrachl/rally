@@ -95,16 +95,21 @@ engage through live chat.
 **Prerequisites:** Java 21+
 
 1.) Clone the repo and enter the folder:
+   
    ```bash
    git clone https://github.com/MrTrachl/rally.git
    cd rally
-
+   ```
+ 2.) Add your API key
+   ```bash
    polygon.api.key=your_polygon_api_key_here
-
-  3.) Run the App
+   ```
+ 3.) Run the App
+  
+  ```bash
   ./mvnw spring-boot:run
-
-4.) Open http://localhost:8080 in your browser!
+   ```
+ 4.) Open http://localhost:8080 in your browser!
 ---
 
 *Built by Ian Trachl — [github.com/MrTrachl](https://github.com/MrTrachl)*
