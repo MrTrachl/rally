@@ -83,13 +83,6 @@ engage through live chat.
 
 ---
 
-##  Running Locally
-
-1. Clone the repo
-2. Add your Massive.com (Polygon.io) API key to your application config 👉 NEEDED for data to fill in!
-3. Start the Spring Boot backend
-4. Open the front end in your browser
-
 ## 🚀 Running Locally
 
 **Prerequisites:** Java 21+
