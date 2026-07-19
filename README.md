@@ -105,6 +105,14 @@ engage through live chat.
    ```bash
    polygon.api.key=your_polygon_api_key_here
    ```
+
+   > 💡 **A note on API tiers:** The Massive.com (Polygon.io) **free tier is limited to 5 requests
+   > per minute**. Because a single stock page load fans out into several data calls at once, some
+   > sections may load slowly or appear blank on the free tier until the rate limit resets. For the
+   > smoothest, instant-fill experience when running locally, the lowest paid **Stocks Starter** tier
+   > (which lifts the per-minute request cap) is recommended. This is entirely optional — the demo
+   > video above shows the full experience without needing a paid key.
+
  3.) Run the App
   
   ```bash
