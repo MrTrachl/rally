@@ -17,7 +17,7 @@ Markets have been overdeveloped when it comes to showing data *many different wa
 rarely in a way that's genuinely **beautiful**, and rarely keeping pace with **modern
 social components**.
 
-The gap is real: even Robinhood — a billion-dollar company — only launched the *beta* of
+The gap is real: even Robinhood — a billion-dollar company — is still only just inviting users to the *beta* of
 its social feature in 2026, and even then it isn't without its rough edges. The appetite
 for social, community-driven market tools is clearly there; it just hasn't been fully
 realized yet. Rally was built to bridge those two worlds — beautiful data and modern
